@@ -15,4 +15,24 @@
 
 <ion-content padding>
 
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>Username</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input type="password"></ion-input>
+    </ion-item>
+
+  </ion-list>
+  <button ion-button full>Login</button>
+
+  <p>Dont'have an Account</p>
+
+
+  <button ion-button full (click)="onGotoUserSignup()">Create an Account</button>
+
 </ion-content>

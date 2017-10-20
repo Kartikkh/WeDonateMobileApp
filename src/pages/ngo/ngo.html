@@ -12,7 +12,25 @@
 
 </ion-header>
 
-
 <ion-content padding>
+<ion-list>
+
+  <ion-item>
+    <ion-label floating>NGO Registration Number</ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Password</ion-label>
+    <ion-input type="password"></ion-input>
+  </ion-item>
+
+</ion-list>
+
+  <button ion-button full>Login</button>
+
+  <hr>
+  <p>Dont'have an Account</p>
+  <button ion-button full (click)="onGotoNgoSignup()">Create an Account </button>
 
 </ion-content>

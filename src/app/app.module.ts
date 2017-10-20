@@ -8,14 +8,17 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import {UsersPage} from '../pages/users/users';
 import {NgoPage} from '../pages/ngo/ngo';
-
+import {userSignupPage} from '../pages/users/userSignup/userSignup';
+import {ngoSignupPage} from '../pages/ngo/ngoSignup/ngoSignup';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     UsersPage,
-    NgoPage
+    NgoPage,
+    userSignupPage,
+    ngoSignupPage
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,9 @@ import {NgoPage} from '../pages/ngo/ngo';
     MyApp,
     HomePage,
     UsersPage,
-    NgoPage
+    NgoPage,
+    ngoSignupPage,
+    userSignupPage
   ],
   providers: [
     StatusBar,
