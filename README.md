@@ -25,3 +25,13 @@ $ ionic serve
 
 Substitute ios for android if not on a Mac.
 
+
+## Contribute
+
+Feel free to raise an issue about a bug or new feature you would like to see in this project.
+ 
+If you are willing to do some work, we will be glad to accept your PR.
+
+## License
+
+This project is [Licensed](LICENSE) under the MIT License (MIT).
