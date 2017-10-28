@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {ngoSignupPage} from './ngoSignup/ngoSignup';
+import {NgForm} from "@angular/forms";
 
 @IonicPage()
 @Component({
@@ -12,6 +13,10 @@ export class NgoPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
+  }
+
+  loginForm(form : NgForm) {
+    console.log(form);
   }
 
   onGotoNgoSignup(){
