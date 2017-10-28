@@ -16,7 +16,7 @@ export class NgoPage {
   }
 
   loginForm(form : NgForm) {
-    console.log(form);
+    console.log(form.value);
   }
 
   onGotoNgoSignup(){

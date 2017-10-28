@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {  NavController, NavParams } from 'ionic-angular';
 import {NgForm} from "@angular/forms";
+import {Constants} from '../../../constant/constant';
+
 
 @Component({
   selector: 'page-users',
@@ -13,7 +15,7 @@ export class userSignupPage {
 
 
   userSignUp(form : NgForm){
-    console.log(form);
+  return  http.post()
   }
 
 }

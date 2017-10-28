@@ -10,6 +10,8 @@ import {UsersPage} from '../pages/users/users';
 import {NgoPage} from '../pages/ngo/ngo';
 import {userSignupPage} from '../pages/users/userSignup/userSignup';
 import {ngoSignupPage} from '../pages/ngo/ngoSignup/ngoSignup';
+import {authService} from "../services/authService";
+
 
 @NgModule({
   declarations: [
@@ -36,6 +38,7 @@ import {ngoSignupPage} from '../pages/ngo/ngoSignup/ngoSignup';
   providers: [
     StatusBar,
     SplashScreen,
+    authService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
