@@ -1,23 +1,23 @@
 export class Constants {
 
   public static userSignUp(): string {
-    return "";
+    return "https://localhost:3000/userAuth/signup";
   };
 
   public static userLogin() : string {
-    return ""
+    return "https://localhost:3000/userAuth/login";
   }
 
 
 
   public static ngoSignup() : string {
-    return ""
+    return "https://localhost:3000/ngoAuth/signup";
   }
 
 
 
   public static ngoLogin() : string {
-    return ""
+    return "https://localhost:3000/ngoAuth/login";
   }
 
 }

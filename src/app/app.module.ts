@@ -11,7 +11,7 @@ import {NgoPage} from '../pages/ngo/ngo';
 import {userSignupPage} from '../pages/users/userSignup/userSignup';
 import {ngoSignupPage} from '../pages/ngo/ngoSignup/ngoSignup';
 import {authService} from "../services/authService";
-
+import {HttpModule} from "@angular/http";
 
 @NgModule({
   declarations: [
@@ -24,6 +24,7 @@ import {authService} from "../services/authService";
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -37,6 +38,7 @@ import {authService} from "../services/authService";
   ],
   providers: [
     StatusBar,
+
     SplashScreen,
     authService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
