@@ -38,7 +38,6 @@ import {HttpModule} from "@angular/http";
   ],
   providers: [
     StatusBar,
-
     SplashScreen,
     authService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
