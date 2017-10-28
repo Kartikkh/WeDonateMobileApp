@@ -39,6 +39,6 @@
     <ion-input type="text" required name="address" ngModel></ion-input>
   </ion-item>
 
-  <button ion-button type="submit" full>SignUp</button>
+  <button ion-button type="submit" [disabled]="!f.valid"  full>SignUp</button>
   </form>
 </ion-content>
