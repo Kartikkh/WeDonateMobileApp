@@ -21,8 +21,8 @@ export class UsersPage {
     this.navCtrl.push(userSignupPage);
   }
 
-  UserloginForm(form : NgForm ){
-    this.AuthService.loginUser(form.value);
-  }
+  // UserloginForm(form : NgForm ){
+  //   this.AuthService.loginUser(form.value);
+  // }
 
 }
