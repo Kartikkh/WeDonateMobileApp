@@ -16,10 +16,10 @@ Then, to run it, cd into `WeDonateMobileApp` and run:
 $ ionic serve 
 ```
 
+For Running in a Device
 
 ```bash
-$ npm install 
-$ ionic cordova platform add ios
+$ ionic cordova platform add ios android
 $ ionic cordova run ios
 $ ionic cordova run android
 ```
