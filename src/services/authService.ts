@@ -8,7 +8,7 @@ import { LoadingController,AlertController } from 'ionic-angular';
 export class authService {
 
   private isAuthenticated = false;
-  private authToken;
+  public authToken;
 
   constructor( public http : Http,
                public alertCtrl: AlertController,
@@ -16,10 +16,7 @@ export class authService {
                public storage: Storage) {}
 
 
-
-
   loginNgo(ngo){
-
     const loading = this.loadingCtrl.create({
       content: 'Please wait! While we are coming up',
       spinner : 'dots'
@@ -45,7 +42,11 @@ export class authService {
         }
       },
       error=>{
+
         loading.dismiss();
+        alert.setMessage("Something went wrong ! Please Try Again ");
+        alert.present();
+
       }
 
     )
@@ -54,8 +55,8 @@ export class authService {
   storeUserCredentials(Ngo) {
     this.storage.set('token', Ngo.token);
     this.storage.set('Credential',Ngo.ngo);
-    this.authToken = Ngo.token;
-    this.isAuthenticated=true;
+    this.useCredentials(Ngo.token);
+
   }
 
   destroyUserCredentials() {
@@ -63,6 +64,20 @@ export class authService {
     this.authToken = undefined;
     this.storage.remove('Credential');
     this.isAuthenticated=false;
+  }
+
+  loadCredential(){
+    this.authToken = this.storage.get('token');
+    if(this.authToken){
+      this.isAuthenticated=true;
+    }
+
+    return this.authToken;
+  }
+
+  useCredentials(token){
+    this.authToken = token;
+    this.isAuthenticated=true;
   }
 
 

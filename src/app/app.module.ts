@@ -12,6 +12,9 @@ import {userSignupPage} from '../pages/users/userSignup/userSignup';
 import {ngoSignupPage} from '../pages/ngo/ngoSignup/ngoSignup';
 import {authService} from "../services/authService";
 import {HttpModule} from "@angular/http";
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+//import {requestOptionsProvider} from '../services/requestHeader.service'
+import {AuthInterceptor} from '../services/requestHeader.service'
 
 @NgModule({
   declarations: [
@@ -41,7 +44,8 @@ import {HttpModule} from "@angular/http";
     StatusBar,
     SplashScreen,
     authService,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ]
 })
 export class AppModule {}

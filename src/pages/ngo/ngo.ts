@@ -21,14 +21,6 @@ export class NgoPage {
 
   loginForm(form : NgForm) {
     console.log(form.value);
-    // this.http.post(Constants.ngoLogin(),form.value).subscribe(
-    //   data=>{
-    //
-    //   },
-    //   error => {
-    //
-    //   })
-
     this.AuthService.loginNgo(form.value)
 
 
