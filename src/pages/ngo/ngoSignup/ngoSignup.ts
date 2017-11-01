@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {NgForm} from "@angular/forms";
-import {Http} from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import {Constants} from '../../../constant/constant';
 import { LoadingController,AlertController } from 'ionic-angular';
 
@@ -15,7 +15,7 @@ export class ngoSignupPage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public loadingCtrl: LoadingController,
-              public http : Http,
+              public http : HttpClient,
               public alertCtrl: AlertController) {}
 
   ngoSignUp(form : NgForm ){
@@ -33,15 +33,14 @@ export class ngoSignupPage {
 
     loading.present();
     this.http.post(Constants.ngoSignup(),form.value).subscribe(
-      data=>{
-        console.log(form.value);
+      (data:Response)=>{
         loading.dismiss();
-        console.log(data.json());
-        if(data.json().message === "Registration already exits"){
+        console.log(data);
+        if(data.message === "Registration already exits"){
           alert.setMessage("Ngo with Given Registration Id already exits");
           alert.present();
         }
-        else if (data.json().message == "You have Signed-Up successfully, but Verification Email could not be Sent. Try again later."){
+        else if (data.message === "You have Signed-Up successfully, but Verification Email could not be Sent. Try again later."){
           alert.setTitle("Please verify your account after login");
           alert.setMessage("You have Signed-Up successfully, but Verification Email could not be Sent");
           alert.present();

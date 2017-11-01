@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
-import {Http} from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import {Constants} from '../constant/constant';
 import { Storage } from '@ionic/storage';
 import { LoadingController,AlertController } from 'ionic-angular';
+
+
 @Injectable()
 
-export class authService {
+export class ngoAuthService {
 
   private isAuthenticated = false;
   public authToken;
 
-  constructor( public http : Http,
+  constructor( public http : HttpClient,
                public alertCtrl: AlertController,
                public loadingCtrl: LoadingController,
                public storage: Storage) {}
@@ -33,16 +35,18 @@ export class authService {
     this.http.post(Constants.ngoLogin(),ngo).subscribe(
       data=>{
         loading.dismiss();
-        console.log(data.json());
-        if(data.json() === "does not exits" ){
-          alert.setMessage("You Have Added Wrong Credentials ! ");
+
+        if(data === "does not exits" ){
+          alert.setMessage("You Have Entered Wrong Registration Id! ");
           alert.present();
-        }else {
-          this.storeUserCredentials(data.json());
+        } else if(data === "Wrong Password"){
+          alert.setMessage("You Have Entered Wrong Password ! ");
+          alert.present();
+        }else{
+          this.storeUserCredentials(data);
         }
       },
       error=>{
-
         loading.dismiss();
         alert.setMessage("Something went wrong ! Please Try Again ");
         alert.present();
@@ -53,8 +57,8 @@ export class authService {
   }
 
   storeUserCredentials(Ngo) {
+
     this.storage.set('token', Ngo.token);
-    this.storage.set('Credential',Ngo.ngo);
     this.useCredentials(Ngo.token);
 
   }
@@ -62,18 +66,9 @@ export class authService {
   destroyUserCredentials() {
     this.storage.remove('token');
     this.authToken = undefined;
-    this.storage.remove('Credential');
     this.isAuthenticated=false;
   }
 
-  loadCredential(){
-    this.authToken = this.storage.get('token');
-    if(this.authToken){
-      this.isAuthenticated=true;
-    }
-
-    return this.authToken;
-  }
 
   useCredentials(token){
     this.authToken = token;

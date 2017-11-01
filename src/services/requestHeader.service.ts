@@ -1,18 +1,28 @@
 import {Injectable} from '@angular/core';
 import {HttpEvent, HttpInterceptor, HttpHandler, HttpRequest} from '@angular/common/http';
-import {authService} from "./authService";
+import { Storage } from '@ionic/storage';
 import {Observable} from "rxjs/Observable";
 
 @Injectable()
+
+
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private AuthService: authService) {}
+  authHeader :string ;
+  constructor( public storage: Storage) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // Get the auth header from the service.
-    const authHeader = this.AuthService.loadCredential();
-    // Clone the request to add the new header.
-    const authReq = req.clone({headers: req.headers.set('Authorization', authHeader)});
-    // Pass on the cloned request instead of the original request.
+
+
+    this.storage.get('token').then((val) => {
+    this.authHeader=val;
+    });
+
+    console.log(this.authHeader);
+    const authReq = req.clone({headers: req.headers.set('Authorization', 'Bearer ' + this.authHeader)});
+
     return next.handle(authReq);
   }
+
 }
+
+

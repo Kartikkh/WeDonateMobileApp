@@ -10,13 +10,15 @@ import {UsersPage} from '../pages/users/users';
 import {NgoPage} from '../pages/ngo/ngo';
 import {userSignupPage} from '../pages/users/userSignup/userSignup';
 import {ngoSignupPage} from '../pages/ngo/ngoSignup/ngoSignup';
-import {authService} from "../services/authService";
-import {HttpModule} from "@angular/http";
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-//import {requestOptionsProvider} from '../services/requestHeader.service'
-import {AuthInterceptor} from '../services/requestHeader.service'
+import {HttpClientModule } from '@angular/common/http';
+import {ngoAuthService} from '../services/ngoAuthService';
+import {AuthInterceptor} from '../services/requestHeader.service';
+
+
 
 @NgModule({
+
   declarations: [
     MyApp,
     HomePage,
@@ -25,9 +27,10 @@ import {AuthInterceptor} from '../services/requestHeader.service'
     userSignupPage,
     ngoSignupPage
   ],
+
   imports: [
     BrowserModule,
-    HttpModule,
+    HttpClientModule,
     IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp)
   ],
@@ -43,9 +46,12 @@ import {AuthInterceptor} from '../services/requestHeader.service'
   providers: [
     StatusBar,
     SplashScreen,
-    authService,
+    ngoAuthService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+    { provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true}
   ]
+
 })
 export class AppModule {}
