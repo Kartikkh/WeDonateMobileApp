@@ -15,6 +15,9 @@ import {HttpClientModule } from '@angular/common/http';
 import {ngoAuthService} from '../services/ngoAuthService';
 import {AuthInterceptor} from '../services/requestHeader.service';
 import {userAuthService} from "../services/userAuthService";
+import {ngoDashboard} from "../pages/ngo/dashboard/ngoDashboard";
+import {userDashboard} from '../pages/users/dashboard/userDashboard'
+
 
 
 @NgModule({
@@ -25,7 +28,9 @@ import {userAuthService} from "../services/userAuthService";
     UsersPage,
     NgoPage,
     userSignupPage,
-    ngoSignupPage
+    ngoSignupPage,
+    ngoDashboard,
+    userDashboard
   ],
 
   imports: [
@@ -41,7 +46,9 @@ import {userAuthService} from "../services/userAuthService";
     UsersPage,
     NgoPage,
     ngoSignupPage,
-    userSignupPage
+    userSignupPage,
+    ngoDashboard,
+    userDashboard
   ],
   providers: [
     StatusBar,

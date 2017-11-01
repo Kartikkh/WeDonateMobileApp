@@ -9,7 +9,7 @@ import { LoadingController,AlertController } from 'ionic-angular';
 
 export class ngoAuthService {
 
-  private isAuthenticated = false;
+  public isAuthenticated = false;
   public authToken;
 
   constructor( public http : HttpClient,
@@ -32,34 +32,41 @@ export class ngoAuthService {
 
 
     loading.present();
+
+
+    let promise = new Promise((resolve, reject) => {
     this.http.post(Constants.ngoLogin(),ngo).subscribe(
       data=>{
         loading.dismiss();
-
         if(data === "does not exits" ){
           alert.setMessage("You Have Entered Wrong Registration Id! ");
           alert.present();
+          reject()
         } else if(data === "Wrong Password"){
           alert.setMessage("You Have Entered Wrong Password ! ");
           alert.present();
+          reject()
         }else{
           this.storeUserCredentials(data);
+          resolve()
         }
       },
       error=>{
         loading.dismiss();
         alert.setMessage("Something went wrong ! Please Try Again ");
         alert.present();
+        reject();
+      })
 
-      }
+    });
+    return promise;
 
-    )
+
   }
 
   storeUserCredentials(Ngo) {
     this.storage.set('token', Ngo.token);
     this.useCredentials(Ngo.token);
-
   }
 
   destroyUserCredentials() {

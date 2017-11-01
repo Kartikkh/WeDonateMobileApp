@@ -11,7 +11,7 @@ import { LoadingController,AlertController } from 'ionic-angular';
 export class userAuthService{
 
 
-  private isAuthenticated = false;
+  public isAuthenticated = false;
   public authToken;
 
 
@@ -36,6 +36,9 @@ export class userAuthService{
 
 
     loading.present();
+
+
+    let promise = new Promise((resolve, reject) => {
     this.http.post(Constants.userLogin(),user).subscribe(
       data=>{
         console.log(data)
@@ -44,24 +47,33 @@ export class userAuthService{
         if(data['message']=='Authentication failed. User not found.'){
           alert.setMessage("Please Entered the UserName Correctly ! ");
           alert.present();
+          reject()
         } else if(data['message'] === "Your password is invalid!"){
           alert.setMessage("You Have Entered Wrong Password ! ");
           alert.present();
+          reject();
         }if(data['message']=== 'First Verify Your Account'){
           alert.setMessage("Please Check your mail and verify your account");
           alert.present();
+          reject();
         }else{
           this.storeUserCredentials(data);
+          resolve();
+
         }
       },
       error=>{
         loading.dismiss();
         alert.setMessage("Something went wrong ! Please Try Again ");
         alert.present();
+        reject();
 
       }
 
     )
+    });
+    return promise;
+
   }
 
   storeUserCredentials(user) {
@@ -70,16 +82,18 @@ export class userAuthService{
 
   }
 
-  destroyUserCredentials() {
-    this.storage.remove('token');
-    this.authToken = undefined;
-    this.isAuthenticated=false;
-  }
 
 
   useCredentials(token){
     this.authToken = token;
     this.isAuthenticated=true;
+  }
+
+
+  destroyUserCredentials() {
+    this.storage.remove('token');
+    this.authToken = undefined;
+    this.isAuthenticated=false;
   }
 
 
