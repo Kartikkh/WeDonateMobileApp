@@ -5,8 +5,8 @@ import {Constants} from '../../../constant/constant';
 
 import { LoadingController,AlertController } from 'ionic-angular';
 
+import { HttpClient } from '@angular/common/http';
 
-import { Http} from '@angular/http';
 
 @Component({
   selector: 'page-users',
@@ -16,7 +16,7 @@ export class userSignupPage {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public http : Http,
+              public http : HttpClient,
               public loadingCtrl: LoadingController,
               public alertCtrl: AlertController) {}
 
@@ -40,14 +40,13 @@ export class userSignupPage {
      this.http.post(Constants.userSignUp(),form.value).subscribe(
     data=>{
       loading.dismiss();
-      console.log(data.json());
-      if(data.json() =="Username Already exits"){
+      if(data =="Username Already exits"){
         alert.setMessage("Username Already Exits");
         alert.present();
-      }else if(data.json() == "Email Already exits"){
+      }else if(data == "Email Already exits"){
         alert.setMessage( "Email Already exits");
         alert.present();
-      }else if (data.json() == "You have Signed-Up successfully, but Verification Email could not be Sent. Try again later."){
+      }else if (data == "You have Signed-Up successfully, but Verification Email could not be Sent. Try again later."){
         alert.setTitle("Please verify your account after login");
         alert.setMessage("You have Signed-Up successfully, but Verification Email could not be Sent");
         alert.present();

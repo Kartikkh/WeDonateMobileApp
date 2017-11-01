@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {userSignupPage} from './userSignup/userSignup'
-
-//import {authService} from '../../services/ngoAuthService'
-
+import {userAuthService} from '../../services/userAuthService'
+import {NgForm} from "@angular/forms";
 @IonicPage()
 
 @Component({
@@ -13,7 +12,9 @@ import {userSignupPage} from './userSignup/userSignup'
 
 export class UsersPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams ) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public userAuthService:userAuthService) {
 
   }
 
@@ -21,8 +22,8 @@ export class UsersPage {
     this.navCtrl.push(userSignupPage);
   }
 
-  // UserloginForm(form : NgForm ){
-  //   this.AuthService.loginUser(form.value);
-  // }
+  UserloginForm(form : NgForm ){
+    this.userAuthService.loginUser(form.value);
+  }
 
 }

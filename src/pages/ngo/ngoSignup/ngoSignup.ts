@@ -32,15 +32,15 @@ export class ngoSignupPage {
     });
 
     loading.present();
-    this.http.post(Constants.ngoSignup(),form.value).subscribe(
+    this.http.post<any>(Constants.ngoSignup(),form.value).subscribe(
       (data:Response)=>{
         loading.dismiss();
         console.log(data);
-        if(data.message === "Registration already exits"){
+        if(data['message'] === "Registration already exits"){
           alert.setMessage("Ngo with Given Registration Id already exits");
           alert.present();
         }
-        else if (data.message === "You have Signed-Up successfully, but Verification Email could not be Sent. Try again later."){
+        else if (data['message'] === "You have Signed-Up successfully, but Verification Email could not be Sent. Try again later."){
           alert.setTitle("Please verify your account after login");
           alert.setMessage("You have Signed-Up successfully, but Verification Email could not be Sent");
           alert.present();

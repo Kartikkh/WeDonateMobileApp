@@ -5,12 +5,16 @@ import { Storage } from '@ionic/storage';
 import { LoadingController,AlertController } from 'ionic-angular';
 
 
+
 @Injectable()
 
-export class ngoAuthService {
+export class userAuthService{
+
 
   private isAuthenticated = false;
   public authToken;
+
+
 
   constructor( public http : HttpClient,
                public alertCtrl: AlertController,
@@ -18,7 +22,7 @@ export class ngoAuthService {
                public storage: Storage) {}
 
 
-  loginNgo(ngo){
+  loginUser(user){
     const loading = this.loadingCtrl.create({
       content: 'Please wait! While we are coming up',
       spinner : 'dots'
@@ -32,15 +36,19 @@ export class ngoAuthService {
 
 
     loading.present();
-    this.http.post(Constants.ngoLogin(),ngo).subscribe(
+    this.http.post(Constants.userLogin(),user).subscribe(
       data=>{
+        console.log(data)
         loading.dismiss();
 
-        if(data === "does not exits" ){
-          alert.setMessage("You Have Entered Wrong Registration Id! ");
+        if(data['message']=='Authentication failed. User not found.'){
+          alert.setMessage("Please Entered the UserName Correctly ! ");
           alert.present();
-        } else if(data === "Wrong Password"){
+        } else if(data['message'] === "Your password is invalid!"){
           alert.setMessage("You Have Entered Wrong Password ! ");
+          alert.present();
+        }if(data['message']=== 'First Verify Your Account'){
+          alert.setMessage("Please Check your mail and verify your account");
           alert.present();
         }else{
           this.storeUserCredentials(data);
@@ -56,9 +64,9 @@ export class ngoAuthService {
     )
   }
 
-  storeUserCredentials(Ngo) {
-    this.storage.set('token', Ngo.token);
-    this.useCredentials(Ngo.token);
+  storeUserCredentials(user) {
+    this.storage.set('token', user.token);
+    this.useCredentials(user.token);
 
   }
 
@@ -78,5 +86,7 @@ export class ngoAuthService {
   logout(){
     this.destroyUserCredentials();
   }
+
+
 
 }

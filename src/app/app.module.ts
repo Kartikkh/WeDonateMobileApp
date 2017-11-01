@@ -14,7 +14,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import {HttpClientModule } from '@angular/common/http';
 import {ngoAuthService} from '../services/ngoAuthService';
 import {AuthInterceptor} from '../services/requestHeader.service';
-
+import {userAuthService} from "../services/userAuthService";
 
 
 @NgModule({
@@ -47,6 +47,7 @@ import {AuthInterceptor} from '../services/requestHeader.service';
     StatusBar,
     SplashScreen,
     ngoAuthService,
+    userAuthService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     { provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
