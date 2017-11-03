@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController,ViewController } from 'ionic-angular';
 import {ngoAuthService} from "../../../services/ngoAuthService";
 import {NavParams} from "ionic-angular";
 
@@ -11,12 +11,16 @@ export class ngoDashboard{
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public ngoAuthService:ngoAuthService) {
+              public ngoAuthService:ngoAuthService,
+              private viewCtrl: ViewController) {
 
   }
 
   ionViewCanEnter() {
     return this.ngoAuthService.isAuthenticated;
+  }
+  ionViewWillEnter() {
+    return this.viewCtrl.showBackButton(false);
   }
 
 }

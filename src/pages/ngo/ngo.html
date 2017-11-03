@@ -8,13 +8,11 @@
 
 <ion-content padding>
 
-
 <form #f="ngForm" (ngSubmit)="loginForm(f)">
 
   <ion-list>
 
     <ion-item>
-
       <ion-label floating>NGO Registration Number</ion-label>
         <ion-input type="text" ngModel name="regNo" required></ion-input>
       </ion-item>
@@ -31,7 +29,13 @@
 </form>
 
   <hr>
-  <p>Dont'have an Account</p>
-  <button ion-button full (click)="onGotoNgoSignup()">Create an Account </button>
+
+  <p>Don't have an Account</p>
+
+  <button ion-button full (click) = "onGotoNgoSignup()">Create an Account </button>
+
+  <hr>
+
+  <button ion-button full (click) = "resendMail()"> Resend Mail </button>
 
 </ion-content>

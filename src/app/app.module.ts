@@ -17,7 +17,7 @@ import {AuthInterceptor} from '../services/requestHeader.service';
 import {userAuthService} from "../services/userAuthService";
 import {ngoDashboard} from "../pages/ngo/dashboard/ngoDashboard";
 import {userDashboard} from '../pages/users/dashboard/userDashboard'
-
+ import {ResendMail} from '../pages/ngo/resendMail/resendMail'
 
 
 @NgModule({
@@ -30,7 +30,8 @@ import {userDashboard} from '../pages/users/dashboard/userDashboard'
     userSignupPage,
     ngoSignupPage,
     ngoDashboard,
-    userDashboard
+    userDashboard,
+    ResendMail
   ],
 
   imports: [
@@ -48,7 +49,8 @@ import {userDashboard} from '../pages/users/dashboard/userDashboard'
     ngoSignupPage,
     userSignupPage,
     ngoDashboard,
-    userDashboard
+    userDashboard,
+    ResendMail
   ],
   providers: [
     StatusBar,
