@@ -28,16 +28,9 @@ export class UsersPage {
   }
 
   UserloginForm(form : NgForm ){
-    const loading = this.loadingCtrl.create({
-      content: 'Logging In !',
-      spinner : 'dots'
-    });
-    loading.present();
+
     this.userAuthService.loginUser(form.value).then(()=>{
-      setTimeout(()=>{
-        loading.dismiss();
         this.navCtrl.setRoot(userDashboard);
-      },1000);
     }).catch(err =>{
 
     })

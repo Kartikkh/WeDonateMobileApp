@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { ViewController  } from 'ionic-angular';
-import {userAuthService} from "../../../services/userAuthService";
+import {ngoAuthService} from "../../../services/ngoAuthService";
 import { LoadingController,AlertController } from 'ionic-angular';
 import {NavController,App} from "ionic-angular";
 import {HomePage} from "../../home/home";
 
 
 @Component({
- template:`<ion-list>
+  template:`<ion-list>
   <ion-list-header>Ionic</ion-list-header>
   <button ion-item (click)="close()">Learn Ionic</button>
   <button ion-item (click)="Profile()">Profile</button>
@@ -16,9 +16,9 @@ import {HomePage} from "../../home/home";
 </ion-list>
 `
 })
-export class userPopover{
+export class ngoPopover{
   constructor(public viewCtrl: ViewController,
-              private UserAuthService :userAuthService,
+              private ngoAuthService :ngoAuthService,
               public alertCtrl: AlertController,
               public loadingCtrl: LoadingController,
               public navCtrl: NavController,public appCtrl: App ) {}
@@ -36,12 +36,12 @@ export class userPopover{
 
     loading.present();
 
-    this.UserAuthService.logout();
+    this.ngoAuthService.logout();
     this.viewCtrl.dismiss();
-      setTimeout( () => {
-        loading.dismiss();
-        this.appCtrl.getRootNav().setRoot(HomePage);
-      }, 1000);
+    setTimeout( () => {
+      loading.dismiss();
+      this.appCtrl.getRootNav().setRoot(HomePage);
+    }, 1000);
   }
 
   Profile(){

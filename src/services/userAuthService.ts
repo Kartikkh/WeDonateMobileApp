@@ -41,9 +41,7 @@ export class userAuthService{
     let promise = new Promise((resolve, reject) => {
     this.http.post(Constants.userLogin(),user).subscribe(
       data=>{
-        console.log(data)
         loading.dismiss();
-
         if(data['message']=='Authentication failed. User not found.'){
           alert.setMessage("Please Entered the UserName Correctly ! ");
           alert.present();

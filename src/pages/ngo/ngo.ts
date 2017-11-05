@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { IonicPage, NavController,LoadingController } from 'ionic-angular';
 import {ngoSignupPage} from './ngoSignup/ngoSignup';
 import {NgForm} from "@angular/forms";
 import {ngoAuthService} from "../../services/ngoAuthService";
@@ -18,24 +18,21 @@ import {ResendMail} from './resendMail/resendMail'
 export class NgoPage {
 
   constructor(public navCtrl: NavController,
-              private ngoAuthService : ngoAuthService
+              private ngoAuthService : ngoAuthService,
+              public loadingCtrl: LoadingController
              ){}
 
 
   loginForm(form : NgForm) {
+
+
     this.ngoAuthService.loginNgo(form.value).then(()=>{
-      setTimeout(()=>{
-        this.navCtrl.push(ngoDashboard);
-      },1000);
+
+        this.navCtrl.setRoot(ngoDashboard);
+
     }).catch(error=>{
     })
   }
-
-
-   logoutUser() {
-     this.ngoAuthService.logout();
-  }
-
 
   onGotoNgoSignup(){
      this.navCtrl.push(ngoSignupPage);

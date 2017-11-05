@@ -20,7 +20,7 @@ export class ngoAuthService {
 
   loginNgo(ngo){
     const loading = this.loadingCtrl.create({
-      content: 'Please wait! While we are coming up',
+      content: 'Logging In',
       spinner : 'dots'
     });
 
@@ -29,15 +29,13 @@ export class ngoAuthService {
       message: 'Please try again later',
       buttons: ['okay']
     });
-
-
+    
     loading.present();
-
 
     let promise = new Promise((resolve, reject) => {
     this.http.post(Constants.ngoLogin(),ngo).subscribe(
       data=>{
-        loading.dismiss();
+          loading.dismiss();
         if(data === "does not exits" ){
           alert.setMessage("You Have Entered Wrong Registration Id! ");
           alert.present();

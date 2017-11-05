@@ -20,7 +20,7 @@ import {userDashboard} from '../pages/users/dashboard/userDashboard'
 import {ResendMail} from '../pages/ngo/resendMail/resendMail'
 import {userResendMail} from '../pages/users/resendMail/userResendMail'
 import {userPopover} from "../pages/users/sidePopover/sidePopover";
-
+import {ngoPopover} from "../pages/ngo/ngoPopover/ngoPopover";
 
 @NgModule({
 
@@ -35,7 +35,8 @@ import {userPopover} from "../pages/users/sidePopover/sidePopover";
     userDashboard,
     ResendMail,
     userResendMail,
-    userPopover
+    userPopover,
+    ngoPopover
   ],
 
   imports: [
@@ -56,7 +57,8 @@ import {userPopover} from "../pages/users/sidePopover/sidePopover";
     userDashboard,
     ResendMail,
     userResendMail,
-    userPopover
+    userPopover,
+    ngoPopover
   ],
   providers: [
     StatusBar,
