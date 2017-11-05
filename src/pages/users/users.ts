@@ -4,6 +4,7 @@ import {userSignupPage} from './userSignup/userSignup'
 import {userAuthService} from '../../services/userAuthService'
 import {NgForm} from "@angular/forms";
 import {userDashboard} from "./dashboard/userDashboard";
+import {userResendMail} from "./resendMail/userResendMail";
 //import { LoadingController,AlertController } from 'ionic-angular';
 
 @IonicPage()
@@ -27,9 +28,7 @@ export class UsersPage {
 
   UserloginForm(form : NgForm ){
 
-
-
-      this.userAuthService.loginUser(form.value).then(()=>{
+    this.userAuthService.loginUser(form.value).then(()=>{
       setTimeout(()=>{
         this.navCtrl.push(userDashboard);
       },1000);
@@ -38,4 +37,10 @@ export class UsersPage {
     })
   }
 
+
+  userResendMail(){
+    this.navCtrl.push(userResendMail)
+  }
+
 }
+

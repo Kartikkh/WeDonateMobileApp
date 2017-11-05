@@ -6,11 +6,11 @@ import {Constants} from "../../../constant/constant";
 import { LoadingController,AlertController } from 'ionic-angular';
 
 @Component({
-  templateUrl: 'resendMail.html'
+  templateUrl: 'userResendMail.html'
 })
 
 
-export class ResendMail {
+export class userResendMail {
 
   constructor(public navCtrl: NavController,
               public http : HttpClient,

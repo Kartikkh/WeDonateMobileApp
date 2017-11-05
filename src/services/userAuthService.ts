@@ -90,15 +90,15 @@ export class userAuthService{
   }
 
 
-  destroyUserCredentials() {
+  destroyUserCredentials()  {
     this.storage.remove('token');
     this.authToken = undefined;
     this.isAuthenticated=false;
   }
 
 
-  logout(){
-    this.destroyUserCredentials();
+  logout() : any{
+     this.destroyUserCredentials();
   }
 
 

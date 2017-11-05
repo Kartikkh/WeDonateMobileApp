@@ -1,0 +1,25 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Resend Mail</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <form #f="ngForm" (ngSubmit)="resendVerificationMail(f)">
+
+    <ion-list>
+
+      <ion-item>
+
+        <ion-label floating>Email</ion-label>
+        <ion-input type="text" ngModel name="email" required></ion-input>
+      </ion-item>
+
+    </ion-list>
+
+    <button ion-button  type="submit" [disabled]="!f.valid"  full>Resend Mail</button>
+
+  </form>
+</ion-content>
