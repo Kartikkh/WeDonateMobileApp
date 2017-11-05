@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController ,ViewController,PopoverController  } from 'ionic-angular';
+import { NavController,ViewController,PopoverController } from 'ionic-angular';
 import {NavParams} from "ionic-angular";
 import {userAuthService} from "../../../services/userAuthService";
 import {userPopover} from "../sidePopover/sidePopover";
@@ -13,13 +13,13 @@ export class userDashboard{
               public navParams: NavParams,
               public userAuthService:userAuthService,
               private viewCtrl: ViewController,
-              public popoverCtrl: PopoverController) {
+              public popoverCtrl: PopoverController) {}
 
-  }
 
   ionViewCanEnter() {
     return this.userAuthService.isAuthenticated;
   }
+
   ionViewWillEnter() {
    return  this.viewCtrl.showBackButton(false);
   }

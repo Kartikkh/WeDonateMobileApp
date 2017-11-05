@@ -24,7 +24,7 @@ export class userAuthService{
 
   loginUser(user){
     const loading = this.loadingCtrl.create({
-      content: 'Please wait! While we are coming up',
+      content: 'Logging In !',
       spinner : 'dots'
     });
 
@@ -97,7 +97,7 @@ export class userAuthService{
   }
 
 
-  logout() : any{
+  logout() {
      this.destroyUserCredentials();
   }
 

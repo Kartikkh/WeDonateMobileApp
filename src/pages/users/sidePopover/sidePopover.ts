@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ViewController  } from 'ionic-angular';
 import {userAuthService} from "../../../services/userAuthService";
 import { LoadingController,AlertController } from 'ionic-angular';
-import {NavController} from "ionic-angular";
+import {NavController,App} from "ionic-angular";
 import {HomePage} from "../../home/home";
 
 
@@ -21,35 +21,35 @@ export class userPopover{
               private UserAuthService :userAuthService,
               public alertCtrl: AlertController,
               public loadingCtrl: LoadingController,
-              public navCtrl: NavController ) {}
+              public navCtrl: NavController,public appCtrl: App ) {}
 
   close() {
     this.viewCtrl.dismiss();
   }
 
   logout(){
+
     const loading = this.loadingCtrl.create({
       content: 'Logging Out !',
       spinner : 'dots'
     });
 
-
-
     loading.present();
-    this.UserAuthService.logout()
+
+    this.UserAuthService.logout();
+    this.viewCtrl.dismiss();
       setTimeout( () => {
         loading.dismiss();
-          this.navCtrl.push(HomePage)
-        // somecode
+        this.appCtrl.getRootNav().setRoot(HomePage);
       }, 1500);
-
-
-
   }
+
   Profile(){
 
   }
+
   contactUs(){
 
   }
+
 }
