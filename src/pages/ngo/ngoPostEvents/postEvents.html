@@ -16,13 +16,37 @@
 
     <ion-item>
       <ion-label>Post</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-textarea type="text"></ion-textarea>
     </ion-item>
 
     <ion-item>
       <ion-label>Location</ion-label>
       <ion-input type="text"></ion-input>
     </ion-item>
+    <button  (click)="GetLocation()"> <ion-icon name="locate"></ion-icon> </button>
+    <ion-item>
+      <ion-label>Start Date</ion-label>
+      <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="event.month"></ion-datetime>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label>Start Time</ion-label>
+      <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="event.timeStarts"></ion-datetime>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label>End Time</ion-label>
+      <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="event.timeEnds"></ion-datetime>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label>Contact Number</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
 
 
 

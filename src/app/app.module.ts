@@ -22,7 +22,8 @@ import {userResendMail} from '../pages/users/resendMail/userResendMail'
 import {userPopover} from "../pages/users/sidePopover/sidePopover";
 import {ngoPopover} from "../pages/ngo/ngoPopover/ngoPopover";
 import {postEvents} from "../pages/ngo/ngoPostEvents/postEvents";
-
+import { Geolocation } from '@ionic-native/geolocation';
+import { NativeGeocoder } from '@ionic-native/native-geocoder';
 
 @NgModule({
 
@@ -69,6 +70,9 @@ import {postEvents} from "../pages/ngo/ngoPostEvents/postEvents";
     SplashScreen,
     ngoAuthService,
     userAuthService,
+    Geolocation,
+    NativeGeocoder,
+
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     { provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
