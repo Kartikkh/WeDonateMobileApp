@@ -21,6 +21,8 @@ import {ResendMail} from '../pages/ngo/resendMail/resendMail'
 import {userResendMail} from '../pages/users/resendMail/userResendMail'
 import {userPopover} from "../pages/users/sidePopover/sidePopover";
 import {ngoPopover} from "../pages/ngo/ngoPopover/ngoPopover";
+import {postEvents} from "../pages/ngo/ngoPostEvents/postEvents";
+
 
 @NgModule({
 
@@ -36,7 +38,8 @@ import {ngoPopover} from "../pages/ngo/ngoPopover/ngoPopover";
     ResendMail,
     userResendMail,
     userPopover,
-    ngoPopover
+    ngoPopover,
+    postEvents
   ],
 
   imports: [
@@ -58,7 +61,8 @@ import {ngoPopover} from "../pages/ngo/ngoPopover/ngoPopover";
     ResendMail,
     userResendMail,
     userPopover,
-    ngoPopover
+    ngoPopover,
+    postEvents
   ],
   providers: [
     StatusBar,
