@@ -1,44 +1,44 @@
 <ion-header>
-<ion-navbar>
-  <ion-title>
-    Ngo Signup
-  </ion-title>
-</ion-navbar>
+  <ion-navbar>
+    <ion-title>
+      Ngo Signup
+    </ion-title>
+  </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <form #f="ngForm" (ngSubmit)="ngoSignUp(f)">
-  <ion-item>
-    <ion-label floating>Name</ion-label>
-    <ion-input type="text" name="ngoName" required ngModel></ion-input>
-  </ion-item>
+  <form [formGroup]="ngoForm" (ngSubmit)="ngoSignUp()">
+    <ion-item>
+      <ion-label floating>Name</ion-label>
+      <ion-input type="text" name="ngoName" required formControlName="ngoName"></ion-input>
+    </ion-item>
 
 
-  <ion-item>
-    <ion-label floating>Registration Number</ion-label>
-    <ion-input type="text" name="regNo"  required ngModel></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-label floating>Registration Number</ion-label>
+      <ion-input type="text" name="regNo" formControlName="regNo"></ion-input>
+    </ion-item>
 
-  <ion-item>
-    <ion-label floating>Password</ion-label>
-    <ion-input type="password" name="password" required ngModel></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input type="password" name="password" formControlName="password"></ion-input>
+    </ion-item>
 
-  <ion-item>
-    <ion-label floating>Email</ion-label>
-    <ion-input type="email" name="email" required ngModel></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input type="email" name="email" formControlName="email"></ion-input>
+    </ion-item>
 
-  <ion-item>
-    <ion-label floating>Contact Number</ion-label>
-    <ion-input type="number" name="contactNo" required ngModel></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-label floating>Contact Number</ion-label>
+      <ion-input type="number" name="contactNo" formControlName="contactNo"></ion-input>
+    </ion-item>
 
-  <ion-item>
-    <ion-label floating>Address</ion-label>
-    <ion-input type="text" required name="address" ngModel></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-label floating>Address</ion-label>
+      <ion-input type="text" name="address" formControlName="address"></ion-input>
+    </ion-item>
 
-  <button ion-button type="submit" full>SignUp</button>
+    <button ion-button type="submit" [disabled]="ngoForm.invalid" full>SignUp</button>
   </form>
 </ion-content>
