@@ -1,32 +1,32 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-     Sign-Up
+      Sign-Up
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-<form #f="ngForm" (ngSubmit)="userSignUp(f)">
-  <ion-list>
+  <form [formGroup]="userForm" (ngSubmit)="userSignUp()">
+    <ion-list>
       <ion-item>
         <ion-label floating>Name</ion-label>
-        <ion-input type="text" name="name" ngModel></ion-input>
+        <ion-input type="text" formControlName="name"></ion-input>
       </ion-item>
-    <ion-item>
-      <ion-label floating>Username</ion-label>
-      <ion-input type="text" name="username" ngModel></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>Password</ion-label>
-      <ion-input type="password" name="password" ngModel></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>Email</ion-label>
-      <ion-input type="email" name="email" ngModel></ion-input>
-    </ion-item>
-  </ion-list>
-  <button ion-button type="submit" [disabled]="!f.valid" full>SignUp</button>
-</form>
+      <ion-item>
+        <ion-label floating>Username</ion-label>
+        <ion-input type="text" formControlName="username"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
+    </ion-list>
+    <button ion-button type="submit" [disabled]="userForm.invalid" full>SignUp</button>
+  </form>
 
 </ion-content>

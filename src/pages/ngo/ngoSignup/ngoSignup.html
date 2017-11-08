@@ -1,12 +1,46 @@
 <ion-header>
-<ion-navbar>
-  <ion-title>
-    Ngo Signup
-  </ion-title>
-</ion-navbar>
+  <ion-navbar>
+    <ion-title>
+      Ngo Signup
+    </ion-title>
+  </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+
+  <form [formGroup]="ngoForm" (ngSubmit)="ngoSignUp()">
+    <ion-item>
+      <ion-label floating>Name</ion-label>
+      <ion-input type="text" name="ngoName" required formControlName="ngoName"></ion-input>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label floating>Registration Number</ion-label>
+      <ion-input type="text" name="regNo" formControlName="regNo"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input type="password" name="password" formControlName="password"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input type="email" name="email" formControlName="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Contact Number</ion-label>
+      <ion-input type="number" name="contactNo" formControlName="contactNo"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Address</ion-label>
+      <ion-input type="text" name="address" formControlName="address"></ion-input>
+    </ion-item>
+
+    <button ion-button type="submit" [disabled]="ngoForm.invalid" full>SignUp</button>
   <form #f="ngForm" (ngSubmit)="ngoSignUp(f)">
   <ion-item>
     <ion-label floating>Name</ion-label>
