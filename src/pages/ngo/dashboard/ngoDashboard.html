@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ngo Dashboard
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentPopover($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-fab right bottom>
+    <button ion-fab color="primary" (click)="postEvent()"><ion-icon ios="ios-add" md="md-add"></ion-icon></button>
+  </ion-fab>
+
+</ion-content>

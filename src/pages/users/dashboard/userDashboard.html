@@ -1,0 +1,42 @@
+
+<ion-navbar #mycontent>
+  <ion-title>
+    User Dashboard
+  </ion-title>
+  <button ion-button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-buttons end>
+    <button ion-button icon-only (click)="presentPopover($event)">
+      <ion-icon name="more"></ion-icon>
+    </button>
+  </ion-buttons>
+
+</ion-navbar>
+
+
+<ion-menu [content]="mycontent">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <button ion-item (click)="openPage(homePage)">
+        Home
+      </button>
+      <button ion-item (click)="openPage(friendsPage)">
+        Friends
+      </button>
+      <button ion-item (click)="openPage(eventsPage)">
+        Events
+      </button>
+      <button ion-item (click)="closeMenu()">
+        Close Menu
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+

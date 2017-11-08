@@ -14,6 +14,7 @@ export class HomePage {
   onGotoUser(){
     this.navCtrl.push(UsersPage);
   }
+
   onGotoNgo(){
     this.navCtrl.push(NgoPage);
   }

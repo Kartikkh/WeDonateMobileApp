@@ -20,4 +20,15 @@ export class Constants {
     return "https://localhost:3000/ngoAuth/login";
   }
 
+  public static ngoResendEmail(): string {
+    return "https://localhost:3000/ngoAuth/resend_email";
+  }
+
+  public static userResendEmail(): string {
+    return "https://localhost:3000/userAuth/resend_email";
+  }
+
+
+
+
 }

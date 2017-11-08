@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Post Events
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary">Cancel</span>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label>Post</ion-label>
+      <ion-textarea type="text"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Location</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <button  (click)="GetLocation()"> <ion-icon name="locate"></ion-icon> </button>
+    <ion-item>
+      <ion-label>Start Date</ion-label>
+      <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="event.month"></ion-datetime>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label>Start Time</ion-label>
+      <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="event.timeStarts"></ion-datetime>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label>End Time</ion-label>
+      <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="event.timeEnds"></ion-datetime>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label>Contact Number</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+
+
+
+  </ion-list>
+
+  <div padding>
+    <button block>Sign In</button>
+  </div>
+
+
+</ion-content>
