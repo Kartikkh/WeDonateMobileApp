@@ -28,7 +28,6 @@ export class UsersPage {
   }
 
   UserloginForm(form : NgForm ){
-
     this.userAuthService.loginUser(form.value).then(()=>{
         this.navCtrl.setRoot(userDashboard);
     }).catch(err =>{
