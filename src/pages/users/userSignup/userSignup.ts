@@ -6,7 +6,7 @@ import {Constants} from '../../../constant/constant';
 import { LoadingController,AlertController } from 'ionic-angular';
 
 import { HttpClient } from '@angular/common/http';
-
+import {UsersPage} from "../users";
 
 @Component({
   selector: 'page-users',
@@ -50,6 +50,11 @@ export class userSignupPage {
         alert.setTitle("Please verify your account after login");
         alert.setMessage("You have Signed-Up successfully, but Verification Email could not be Sent");
         alert.present();
+      }else{
+        alert.setTitle("Please Verify Your Account After Login");
+        alert.setMessage("You have Signed-Up successfully , Please check your mails !");
+        alert.present();
+        this.navCtrl.setRoot(UsersPage);
       }
 
     }, err => {

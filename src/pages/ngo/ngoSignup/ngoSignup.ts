@@ -4,7 +4,7 @@ import {NgForm} from "@angular/forms";
 import { HttpClient } from '@angular/common/http';
 import {Constants} from '../../../constant/constant';
 import { LoadingController,AlertController } from 'ionic-angular';
-
+import {NgoPage} from "../ngo";
 
 @Component({
   selector: 'page-users',
@@ -35,7 +35,6 @@ export class ngoSignupPage {
     this.http.post<any>(Constants.ngoSignup(),form.value).subscribe(
       (data:Response)=>{
         loading.dismiss();
-        console.log(data);
         if(data['message'] === "Registration already exits"){
           alert.setMessage("Ngo with Given Registration Id already exits");
           alert.present();
@@ -44,6 +43,12 @@ export class ngoSignupPage {
           alert.setTitle("Please verify your account after login");
           alert.setMessage("You have Signed-Up successfully, but Verification Email could not be Sent");
           alert.present();
+        }else{
+          alert.setTitle("Please Verify Your Account After Login");
+          alert.setMessage("You have Signed-Up successfully , Please check your mails !");
+          alert.present();
+          this.navCtrl.setRoot(NgoPage);
+
         }
 
       }, err => {
