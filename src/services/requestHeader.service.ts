@@ -8,19 +8,20 @@ import {Observable} from "rxjs/Observable";
 
 export class AuthInterceptor implements HttpInterceptor {
   authHeader :string ;
+
   constructor( public storage: Storage) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
 
     this.storage.get('token').then((val) => {
     this.authHeader=val;
     });
 
+    const authReq = req.clone({headers: req.headers.set('authorization', 'Bearer ' + this.authHeader)});
     console.log(this.authHeader);
-    const authReq = req.clone({headers: req.headers.set('Authorization', 'Bearer ' + this.authHeader)});
-
+    console.log(authReq);
     return next.handle(authReq);
+
   }
 
 }

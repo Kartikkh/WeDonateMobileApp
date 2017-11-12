@@ -12,49 +12,52 @@
 </ion-header>
 <ion-content>
 
-  <ion-list>
 
-    <ion-item>
-      <ion-label>Post</ion-label>
-      <ion-textarea type="text"></ion-textarea>
-    </ion-item>
+  <form [formGroup]="PostEvent" (ngSubmit)="Postevent(PostEvent.value)">
+    <ion-list>
+      <ion-item>
+        <ion-label>Post</ion-label>
+        <ion-textarea type="text" formControlName="description"></ion-textarea>
+      </ion-item>
 
-    <ion-item>
-      <ion-label>Location</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-    <button  (click)="GetLocation()"> <ion-icon name="locate"></ion-icon> </button>
-    <ion-item>
-      <ion-label>Start Date</ion-label>
-      <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="event.month"></ion-datetime>
-    </ion-item>
-
-
-    <ion-item>
-      <ion-label>Start Time</ion-label>
-      <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="event.timeStarts"></ion-datetime>
-    </ion-item>
-
-
-    <ion-item>
-      <ion-label>End Time</ion-label>
-      <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="event.timeEnds"></ion-datetime>
-    </ion-item>
-
-
-    <ion-item>
-      <ion-label>Contact Number</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label>Location</ion-label>
+        <ion-input type="text" formControlName="Location"></ion-input>
+      </ion-item>
+      <button  (click)="GetLocation()"> <ion-icon name="locate"></ion-icon> </button>
 
 
 
+      <ion-item>
+        <ion-label>Start Date</ion-label>
+        <ion-datetime displayFormat="MMM DD YYYY" formControlName="date"></ion-datetime>
+      </ion-item>
 
-  </ion-list>
 
-  <div padding>
-    <button block>Sign In</button>
-  </div>
+      <ion-item>
+        <ion-label>Start Time</ion-label>
+        <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" formControlName="startTime" ></ion-datetime>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label>End Time</ion-label>
+        <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" formControlName="endTime"></ion-datetime>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label>Contact Number</ion-label>
+        <ion-input type="text" formControlName="ContactNumber"></ion-input>
+      </ion-item>
+
+    </ion-list>
+    <div padding>
+      <button ion-button full type="submit">Post</button>
+    </div>
+  </form>
+
+
 
 
 </ion-content>

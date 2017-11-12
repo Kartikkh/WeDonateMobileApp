@@ -8,13 +8,9 @@ export class Constants {
     return "https://localhost:3000/userAuth/login";
   }
 
-
-
   public static ngoSignup() : string {
     return "https://localhost:3000/ngoAuth/signup";
   }
-
-
 
   public static ngoLogin() : string {
     return "https://localhost:3000/ngoAuth/login";
@@ -29,6 +25,8 @@ export class Constants {
   }
 
 
-
+  public static postEvents():string{
+    return "https://localhost:3000/ngoEvent/post"
+}
 
 }

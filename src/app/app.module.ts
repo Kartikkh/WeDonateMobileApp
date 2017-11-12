@@ -24,6 +24,7 @@ import {ngoPopover} from "../pages/ngo/ngoPopover/ngoPopover";
 import {postEvents} from "../pages/ngo/ngoPostEvents/postEvents";
 import { Geolocation } from '@ionic-native/geolocation';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
 
@@ -46,6 +47,8 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder';
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp)
   ],
