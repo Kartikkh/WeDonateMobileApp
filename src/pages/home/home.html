@@ -1,13 +1,13 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      We-Donate
-    </ion-title>
-  </ion-navbar>
-</ion-header>
+<ion-content padding class="background vertical-align-content">
+  <ion-grid>
+        <ion-row>
+              <ion-col>
+                <h3 text-center class="header">We-Donate</h3>
+                <p text-center class="white">Lets come together to donate for a cause</p>
 
-<ion-content padding>
-  <button ion-button full (click)="onGotoUser()">User</button>
-  <hr>
-  <button ion-button full (click)="onGotoNgo()">NGO</button>
+                <button class="button" ion-button full (click)="onGotoUser()">User</button>
+                <button class="button" ion-button full (click)="onGotoNgo()">NGO</button>
+              </ion-col>
+        </ion-row>
+  </ion-grid>
 </ion-content>
