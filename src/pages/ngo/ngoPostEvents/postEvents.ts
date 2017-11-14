@@ -1,11 +1,13 @@
 import { Component,OnInit } from '@angular/core';
-import { Platform, NavParams, ViewController } from 'ionic-angular';
+import { Platform, NavParams, ViewController,NavController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { NativeGeocoder, NativeGeocoderReverseResult } from '@ionic-native/native-geocoder';
 import {  FormGroup,FormControl , Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import {Constants} from "../../../constant/constant";
 import { LoadingController,AlertController } from 'ionic-angular';
+import {ngoDashboard} from "../dashboard/ngoDashboard";
+import io from 'socket.io-client';
 
 @Component({
   templateUrl: 'postEvents.html'
@@ -17,6 +19,7 @@ export class postEvents implements OnInit{
   PostEvent: FormGroup;
 
   constructor(public platform: Platform,
+              public navCtrl: NavController,
               public params: NavParams,
               public viewCtrl: ViewController,
               private geolocation: Geolocation,
@@ -37,8 +40,6 @@ export class postEvents implements OnInit{
       startTime :new FormControl('09.00', Validators.required),
       endTime :new FormControl('11.00', Validators.required)
     })
-
-
   }
 
 
@@ -51,7 +52,6 @@ GetLocation(){
   }).catch((error) => {
     console.log('Error getting location', error);
   });
-
 }
 
 
@@ -86,6 +86,7 @@ getAddress(latitude,longitude){
     this.http.post<any>(Constants.postEvents(),values).subscribe(
       data=>{
         console.log(data);
+        this.navCtrl.setRoot(ngoDashboard);
         loading.dismiss();
       },err=>{
         console.log(err);
