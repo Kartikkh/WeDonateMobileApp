@@ -26,12 +26,14 @@ page-home {
           opacity: 0.7;
     }
 
+    .flex-wrapper {
+      display: flex;
+      justify-content: space-around;
+    }
     .button {
        background-color: #fff;
        height: 50px;
-       width: 47%;
-       float: left;
-       margin: 5px;
+       width: 48%;
        color: #333;
        font-weight: 600;
        border-radius: 4px;
@@ -40,6 +42,11 @@ page-home {
        &:active {
          background-color: #333;
          color: #fff;
+       }
+
+       .icon {
+         margin-right: 10px;
+         margin-top: -4px;
        }
     }
   }
