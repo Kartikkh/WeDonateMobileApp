@@ -5,16 +5,11 @@
 
 ##### Installation :
 
-First install 
-```bash
-$ sudo npm install -g ionic cordova
-```
-
 Then, to run it, cd into `WeDonateMobileApp` and run:
 
 ``` bash
-$ npm install
-$ ionic serve 
+$ npm install or yarn install if using yarn
+$ npm run (or yarn run) ionic serve
 ```
 
 For Running in a Device
