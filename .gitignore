@@ -10,7 +10,10 @@ log.txt
 *.sublime-project
 *.sublime-workspace
 .vscode/
+
+# errors
 npm-debug.log*
+yarn-error.log
 
 .idea/
 .sourcemaps/
@@ -33,3 +36,7 @@ $RECYCLE.BIN/
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
+
+
+# lock-files
+yarn.lock
