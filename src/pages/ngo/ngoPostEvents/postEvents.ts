@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import {Constants} from "../../../constant/constant";
 import { LoadingController,AlertController } from 'ionic-angular';
 import {ngoDashboard} from "../dashboard/ngoDashboard";
-import io from 'socket.io-client';
+
 
 @Component({
   templateUrl: 'postEvents.html'
@@ -17,6 +17,7 @@ import io from 'socket.io-client';
 export class postEvents implements OnInit{
 
   PostEvent: FormGroup;
+
 
   constructor(public platform: Platform,
               public navCtrl: NavController,
@@ -28,40 +29,43 @@ export class postEvents implements OnInit{
               public loadingCtrl: LoadingController,
               public alertCtrl: AlertController) {}
 
-
+  Longitude = new FormControl(0);
+  Latitude = new FormControl(0);
 
   ngOnInit(){
 
     this.PostEvent = new FormGroup({
       description: new FormControl(''),
-      ContactNumber: new FormControl(''),
+      contactNumber: new FormControl(''),
       Location : new FormControl(''),
+      authorisedPerson : new FormControl(''),
       date : new FormControl('2017-11-19', Validators.required),
       startTime :new FormControl('09.00', Validators.required),
-      endTime :new FormControl('11.00', Validators.required)
+      endTime :new FormControl('11.00', Validators.required),
+      longitude : this.Longitude,
+      latitude : this.Latitude
+
     })
   }
 
 
-GetLocation(){
-  this.geolocation.getCurrentPosition().then((resp) => {
-    console.log(resp.coords.latitude);
-    console.log(resp.coords.longitude);
-   this.getAddress(resp.coords.latitude,resp.coords.longitude);
+  GetLocation(){
+    this.geolocation.getCurrentPosition().then((resp) => {
+      this.Longitude.setValue(resp.coords.longitude);
+      this.Latitude.setValue(resp.coords.latitude);
+      this.getAddress(resp.coords.latitude,resp.coords.longitude);
 
-  }).catch((error) => {
-    console.log('Error getting location', error);
-  });
-}
+    }).catch((error) => {
+      console.log('Error getting location', error);
+    });
+  }
 
 
-getAddress(latitude,longitude){
-  console.log(latitude);
-  console.log(longitude);
-  this.nativeGeocoder.reverseGeocode(latitude, longitude)
-    .then((result: NativeGeocoderReverseResult) => console.log(JSON.stringify(result)))
-    .catch((error: any) => console.log(error));
-}
+  getAddress(latitude,longitude){
+    this.nativeGeocoder.reverseGeocode(latitude, longitude)
+      .then((result: NativeGeocoderReverseResult) => console.log(JSON.stringify(result)))
+      .catch((error: any) => console.log(error));
+  }
 
   dismiss() {
     this.viewCtrl.dismiss();

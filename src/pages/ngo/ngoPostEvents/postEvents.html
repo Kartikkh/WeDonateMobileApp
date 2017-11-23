@@ -24,7 +24,7 @@
         <ion-label>Location</ion-label>
         <ion-input type="text" formControlName="Location"></ion-input>
       </ion-item>
-      <button  (click)="GetLocation()"> <ion-icon name="locate"></ion-icon> </button>
+      <button type="button"  (click)="GetLocation()"> <ion-icon name="locate"></ion-icon> </button>
 
 
 
@@ -48,8 +48,15 @@
 
       <ion-item>
         <ion-label>Contact Number</ion-label>
-        <ion-input type="text" formControlName="ContactNumber"></ion-input>
+        <ion-input type="text" formControlName="contactNumber"></ion-input>
       </ion-item>
+
+
+      <ion-item>
+        <ion-label>Authorised Person</ion-label>
+        <ion-input type="text" formControlName="authorisedPerson"></ion-input>
+      </ion-item>
+
 
     </ion-list>
     <div padding>

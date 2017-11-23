@@ -1,4 +1,4 @@
-
+<ion-header>
 <ion-navbar #mycontent>
   <ion-title>
     User Dashboard
@@ -14,6 +14,24 @@
 
 </ion-navbar>
 
+</ion-header>
+
+
+<ion-content>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+</ion-content>
+
+
+
 
 <ion-menu [content]="mycontent">
   <ion-header>
@@ -23,6 +41,7 @@
   </ion-header>
 
   <ion-content>
+
     <ion-list>
       <button ion-item (click)="openPage(homePage)">
         Home

@@ -4,6 +4,7 @@ import {NavParams} from "ionic-angular";
 import {userAuthService} from "../../../services/userAuthService";
 import {userPopover} from "../sidePopover/sidePopover";
 
+
 @Component({
   templateUrl: 'userDashboard.html'
 })
@@ -13,7 +14,10 @@ export class userDashboard{
               public navParams: NavParams,
               public userAuthService:userAuthService,
               private viewCtrl: ViewController,
-              public popoverCtrl: PopoverController) {}
+              public popoverCtrl: PopoverController
+            ) {}
+
+
 
 
   ionViewCanEnter() {
@@ -24,12 +28,22 @@ export class userDashboard{
    return  this.viewCtrl.showBackButton(false);
   }
 
+
+  doRefresh(refresher) {
+
+    setTimeout(() => {
+      refresher.complete();
+    }, 2000);
+  }
+
+
   presentPopover(myEvent) {
     let popover = this.popoverCtrl.create(userPopover);
     popover.present({
       ev: myEvent
     });
   }
+
 
 
 
