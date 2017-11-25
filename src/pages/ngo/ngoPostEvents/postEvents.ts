@@ -11,6 +11,9 @@ import { ActionSheetController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+
+
+declare var cordova: any;
 @Component({
   templateUrl: 'postEvents.html'
 })
@@ -42,6 +45,8 @@ export class postEvents implements OnInit{
   Longitude = new FormControl(0);
   Latitude = new FormControl(0);
   Location = new FormControl('');
+
+  fileTransfer: FileTransferObject = this.transfer.create();
 
 
   ngOnInit(){
@@ -128,14 +133,14 @@ export class postEvents implements OnInit{
           text: 'Gallery',
           icon: 'albums',
           handler: () => {
-            this.actionHandler(1);
+          this.actionHandler(1)
           }
         },
         {
           text: 'Camera',
           icon: 'camera',
           handler: () => {
-            this.actionHandler(2);
+            this.actionHandler(2)
           }
         },
         {
@@ -149,45 +154,78 @@ export class postEvents implements OnInit{
     actionSheet.present();
   }
 
+
   actionHandler(selection: any) {
-
-
-
+    var options: any;
 
     if (selection == 1) {
-      const options: CameraOptions = {
+      options = {
         quality: 75,
-        destinationType: Camera.DestinationType.FILE_URI,
-        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+        destinationType: this.camera.DestinationType.FILE_URI,
+        sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
         allowEdit: true,
-        encodingType: Camera.EncodingType.JPEG,
+        encodingType: this.camera.EncodingType.JPEG,
         targetWidth: 500,
         targetHeight: 500,
         saveToPhotoAlbum: false
       };
-
-
-
     } else {
-      const options: CameraOptions = {
-        quality: 70,
-        destinationType: this.camera.DestinationType.DATA_URL,
+      options = {
+        quality: 75,
+        destinationType: this.camera.DestinationType.FILE_URI,
+        sourceType: this.camera.PictureSourceType.CAMERA,
+        allowEdit: true,
         encodingType: this.camera.EncodingType.JPEG,
-        mediaType: this.camera.MediaType.PICTURE,
-
+        targetWidth: 500,
+        targetHeight: 500,
+        saveToPhotoAlbum: false
       };
+    }
+    this.getImage(options)
+  }
 
-      this.camera.getPicture(options).then((imageData) => {
-        // imageData is either a base64 encoded string or a file URI
-        // If it's base64:
-        let base64Image = 'data:image/jpeg;base64,' + imageData;
+  getImage(options){
+      this.camera.getPicture(options).then((imgUrl) => {
+        var sourceDirectory = imgUrl.substring(0, imgUrl.lastIndexOf('/') + 1);
+        var sourceFileName = imgUrl.substring(imgUrl.lastIndexOf('/') + 1, imgUrl.length);
+        sourceFileName = sourceFileName.split('?').shift();
+        this.file.copyFile(sourceDirectory, sourceFileName, cordova.file.externalApplicationStorageDirectory , sourceFileName).then((result: any) => {
+          this.imagePath = imgUrl;
+          this.imageChosen = 1;
+          this.imageNewPath = result.nativeURL;
+
+        }, (err) => {
+          alert(JSON.stringify(err));
+        })
       }, (err) => {
         // Handle error
       });
 
     }
 
-  }
 
+  uploadPhoto() {
+    let loader = this.loadingCtrl.create({
+      content: "Please wait..."
+    });
+    loader.present();
+
+    let filename = this.imagePath.split('/').pop();
+    let options = {
+      fileKey: "file",
+      fileName: filename,
+      chunkedMode: false,
+      mimeType: "image/jpg",
+
+    };
+
+    this.fileTransfer.upload(this.imageNewPath,Constants.postImage(),options).then((entry) => {
+      this.imagePath = '';
+      this.imageChosen = 0;
+      loader.dismiss();
+    }, (err) => {
+      alert(JSON.stringify(err));
+    });
+  }
 
 }

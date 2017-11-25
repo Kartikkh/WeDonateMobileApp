@@ -17,20 +17,20 @@
   <ion-card>
   <form [formGroup]="PostEvent" (ngSubmit)="Postevent(PostEvent.value)">
 
-    <!--<ion-item>-->
-      <!--<button ion-button type="button" >Upload</button>-->
-    <!--</ion-item>-->
-
-
     <ion-card-header>
       <div *ngIf="imageChosen == 0" class="uploadWrap">
         <ion-icon (click)="presentActionSheet()" name="cloud-upload"></ion-icon>
       </div>
 
-      <!--<div *ngIf="imageChosen == 1" class="img-preview">-->
-        <!--<img [src]="imagePath" alt="">-->
-      <!--</div>src-->
+      <div *ngIf="imageChosen == 1" class="img-preview">
+        <img [src]="imagePath" alt="">
+      </div>
     </ion-card-header>
+
+
+    <div *ngIf="imageChosen == 1" class="uploadWrap">
+      <ion-icon (click)="uploadPhoto()" name="cloud-upload"></ion-icon>
+    </div>
 
 
     <ion-list>
@@ -78,9 +78,9 @@
 
 
     </ion-list>
-    <div padding>
+
       <button ion-button full type="submit">Post</button>
-    </div>
+
   </form>
 
 

@@ -29,4 +29,8 @@ export class Constants {
     return "https://localhost:3000/ngoEvent/post"
 }
 
+  public static postImage():string{
+    return "https://localhost:3000/ngoEvent/post"
+  }
+
 }
