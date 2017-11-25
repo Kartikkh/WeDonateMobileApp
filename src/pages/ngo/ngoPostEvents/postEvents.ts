@@ -17,7 +17,7 @@ import {ngoDashboard} from "../dashboard/ngoDashboard";
 export class postEvents implements OnInit{
 
   PostEvent: FormGroup;
-
+  setLocation: string = "";
 
   constructor(public platform: Platform,
               public navCtrl: NavController,
@@ -31,20 +31,20 @@ export class postEvents implements OnInit{
 
   Longitude = new FormControl(0);
   Latitude = new FormControl(0);
-
+  Location = new FormControl('');
   ngOnInit(){
 
     this.PostEvent = new FormGroup({
       description: new FormControl(''),
       contactNumber: new FormControl(''),
-      Location : new FormControl(''),
+
       authorisedPerson : new FormControl(''),
       date : new FormControl('2017-11-19', Validators.required),
       startTime :new FormControl('09.00', Validators.required),
       endTime :new FormControl('11.00', Validators.required),
       longitude : this.Longitude,
-      latitude : this.Latitude
-
+      latitude : this.Latitude,
+      Location : this.Location
     })
   }
 
@@ -53,6 +53,7 @@ export class postEvents implements OnInit{
     this.geolocation.getCurrentPosition().then((resp) => {
       this.Longitude.setValue(resp.coords.longitude);
       this.Latitude.setValue(resp.coords.latitude);
+      this.setLocation =JSON.stringify(resp.coords.latitude) ;
       this.getAddress(resp.coords.latitude,resp.coords.longitude);
 
     }).catch((error) => {
@@ -63,7 +64,10 @@ export class postEvents implements OnInit{
 
   getAddress(latitude,longitude){
     this.nativeGeocoder.reverseGeocode(latitude, longitude)
-      .then((result: NativeGeocoderReverseResult) => console.log(JSON.stringify(result)))
+      .then((result: NativeGeocoderReverseResult) =>{
+         this.setLocation = JSON.stringify(result);
+        this.Location.setValue(result);
+      })
       .catch((error: any) => console.log(error));
   }
 

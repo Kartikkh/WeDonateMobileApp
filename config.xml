@@ -78,7 +78,6 @@
     </platform>
     <engine name="browser" spec="~5.0.1" />
     <engine name="ios" spec="~4.5.3" />
-    <engine name="android" spec="~6.3.0" />
     <plugin name="cordova-plugin-nativestorage" spec="^2.2.2" />
     <plugin name="cordova-sqlite-storage" spec="^2.1.2" />
     <plugin name="cordova-plugin-geolocation" spec="^2.4.3">

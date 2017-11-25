@@ -13,6 +13,13 @@
 <ion-content>
 
 
+
+  <ion-item>
+    <input type="file" (change)="fileUpload($event)" id="file-input" style="opacity: 0" #fileInp>
+    <button ion-button (click)="onClick()">Upload</button>
+  </ion-item>
+
+
   <form [formGroup]="PostEvent" (ngSubmit)="Postevent(PostEvent.value)">
     <ion-list>
       <ion-item>
@@ -22,7 +29,7 @@
 
       <ion-item>
         <ion-label>Location</ion-label>
-        <ion-input type="text" formControlName="Location"></ion-input>
+        <ion-input type="text" formControlName="Location" [(ngModel)]="setLocation" >  </ion-input>
       </ion-item>
       <button type="button"  (click)="GetLocation()"> <ion-icon name="locate"></ion-icon> </button>
 

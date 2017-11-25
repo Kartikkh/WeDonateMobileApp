@@ -29,6 +29,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
+
 @NgModule({
 
   declarations: [
@@ -79,6 +80,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     userAuthService,
     Geolocation,
     NativeGeocoder,
+
 
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     { provide: HTTP_INTERCEPTORS,
