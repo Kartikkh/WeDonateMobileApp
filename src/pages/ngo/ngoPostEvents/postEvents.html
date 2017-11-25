@@ -10,17 +10,29 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
+
+
 <ion-content>
-
-
-
-  <ion-item>
-    <input type="file" (change)="fileUpload($event)" id="file-input" style="opacity: 0" #fileInp>
-    <button ion-button (click)="onClick()">Upload</button>
-  </ion-item>
-
-
+  <ion-card>
   <form [formGroup]="PostEvent" (ngSubmit)="Postevent(PostEvent.value)">
+
+    <!--<ion-item>-->
+      <!--<button ion-button type="button" >Upload</button>-->
+    <!--</ion-item>-->
+
+
+    <ion-card-header>
+      <div *ngIf="imageChosen == 0" class="uploadWrap">
+        <ion-icon (click)="presentActionSheet()" name="cloud-upload"></ion-icon>
+      </div>
+
+      <!--<div *ngIf="imageChosen == 1" class="img-preview">-->
+        <!--<img [src]="imagePath" alt="">-->
+      <!--</div>src-->
+    </ion-card-header>
+
+
     <ion-list>
       <ion-item>
         <ion-label>Post</ion-label>
@@ -72,6 +84,6 @@
   </form>
 
 
-
+</ion-card>
 
 </ion-content>

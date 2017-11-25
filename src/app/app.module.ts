@@ -25,9 +25,9 @@ import {postEvents} from "../pages/ngo/ngoPostEvents/postEvents";
 import { Geolocation } from '@ionic-native/geolocation';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-
-
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { File } from '@ionic-native/file';
+import { FileTransfer } from '@ionic-native/file-transfer';
 
 
 @NgModule({
@@ -80,8 +80,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     userAuthService,
     Geolocation,
     NativeGeocoder,
-
-
+    File,
+    Camera,
+    FileTransfer,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     { provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

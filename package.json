@@ -20,7 +20,10 @@
     "@angular/http": "4.4.3",
     "@angular/platform-browser": "4.4.3",
     "@angular/platform-browser-dynamic": "4.4.3",
+    "@ionic-native/camera": "^4.4.2",
     "@ionic-native/core": "4.3.0",
+    "@ionic-native/file": "^4.4.2",
+    "@ionic-native/file-transfer": "^4.4.2",
     "@ionic-native/geolocation": "^4.3.3",
     "@ionic-native/native-geocoder": "^4.3.3",
     "@ionic-native/native-storage": "^4.3.2",
@@ -33,6 +36,7 @@
     "cordova-plugin-add-swift-support": "^1.7.0",
     "cordova-plugin-compat": "^1.2.0",
     "cordova-plugin-device": "^1.1.7",
+    "cordova-plugin-file-transfer": "^1.7.0",
     "cordova-plugin-geolocation": "^2.4.3",
     "cordova-plugin-ionic-webview": "^1.1.16",
     "cordova-plugin-nativegeocoder": "^2.0.4",
@@ -70,7 +74,10 @@
       "cordova-plugin-whitelist": {},
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
-      "cordova-plugin-ionic-webview": {}
+      "cordova-plugin-ionic-webview": {},
+      "cordova-plugin-file": {},
+      "cordova-plugin-file-transfer": {},
+      "cordova-plugin-camera": {}
     },
     "platforms": [
       "browser",
