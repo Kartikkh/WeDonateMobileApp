@@ -210,22 +210,40 @@ export class postEvents implements OnInit{
     });
     loader.present();
 
-    let filename = this.imagePath.split('/').pop();
-    let options = {
+     var filename = this.imagePath.split('/').pop();
+
+     let options : FileUploadOptions  = {
       fileKey: "file",
       fileName: filename,
       chunkedMode: false,
       mimeType: "image/jpg",
+     };
 
-    };
 
-    this.fileTransfer.upload(this.imageNewPath,Constants.postImage(),options).then((entry) => {
-      this.imagePath = '';
-      this.imageChosen = 0;
-      loader.dismiss();
-    }, (err) => {
-      alert(JSON.stringify(err));
-    });
+    this.http.post(Constants.postImage(),filename).subscribe((data)=>{
+      options.params = {
+          "key": filename,
+          "AWSAccessKeyId": data['awsKey'],
+          "acl": "public-read",
+          "policy": data['policy'],
+          "signature": data['signature'],
+          "Content-Type": "image/jpeg"
+      };
+
+      this.fileTransfer.upload(this.imageNewPath ,"https://" + data['bucket'] + ".s3.amazonaws.com/",options).then((s3data) => {
+        this.imagePath = '';
+        this.imageChosen = 0;
+        console.log(s3data);
+        loader.dismiss();
+      }, (err) => {
+        alert(JSON.stringify(err));
+      });
+
+    },()=>{
+
+    })
+
+
   }
 
 }
