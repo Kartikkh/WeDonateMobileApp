@@ -2,9 +2,7 @@ import { Component } from '@angular/core';
 import {  NavController, NavParams } from 'ionic-angular';
 import {NgForm} from "@angular/forms";
 import {Constants} from '../../../constant/constant';
-
 import { LoadingController,AlertController } from 'ionic-angular';
-
 import { HttpClient } from '@angular/common/http';
 import {UsersPage} from "../users";
 

@@ -1,8 +1,9 @@
 <ion-header>
 <ion-navbar #mycontent>
-  <ion-title>
+   <ion-title>
     User Dashboard
-  </ion-title>
+   </ion-title>
+
   <button ion-button menuToggle>
     <ion-icon name="menu"></ion-icon>
   </button>
@@ -19,7 +20,7 @@
 
 <ion-content>
 
-  <ion-refresher (ionRefresh)="doRefresh($event)">
+  <ion-refresher (ionRefresh)="doRefresh($event);">
     <ion-refresher-content
       pullingIcon="arrow-dropdown"
       pullingText="Pull to refresh"
