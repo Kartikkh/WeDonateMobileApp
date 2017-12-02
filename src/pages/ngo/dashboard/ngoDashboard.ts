@@ -3,16 +3,19 @@ import { NavController,ViewController,PopoverController } from 'ionic-angular';
 import {ngoAuthService} from "../../../services/ngoAuthService";
 import {NavParams} from "ionic-angular";
 import {ngoPopover} from "../ngoPopover/ngoPopover";
-import { ModalController } from 'ionic-angular';
-import { postEvents } from '../ngoPostEvents/postEvents';
+import {ModalController} from 'ionic-angular';
+import {postEvents} from '../ngoPostEvents/postEvents';
 import {Constants} from "../../../constant/constant";
-import { HttpClient } from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
+
 
 @Component({
   templateUrl: 'ngoDashboard.html'
 })
 
 export class ngoDashboard{
+
+  events : {};
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -22,13 +25,16 @@ export class ngoDashboard{
               public popoverCtrl: PopoverController,
               public modalCtrl: ModalController) {}
 
+
   ionViewCanEnter() {
     return this.ngoAuthService.isAuthenticated;
   }
 
+
   ionViewWillEnter() {
     return this.viewCtrl.showBackButton(false);
   }
+
 
   presentPopover(myEvent) {
     let popover = this.popoverCtrl.create(ngoPopover);
@@ -37,24 +43,27 @@ export class ngoDashboard{
     });
   }
 
+
   postEvent(){
     let modal = this.modalCtrl.create(postEvents);
     modal.present();
   }
 
+
   doRefresh(refresher) {
     this.getEvents();
-    setTimeout(() => {
+     setTimeout(() => {
       refresher.complete();
-    }, 2000);
+    }, 1500);
   }
 
 
   getEvents() {
-    this.http.get(Constants.getEvents()).subscribe((data)=>{
+     this.http.get(Constants.getEvents()).subscribe((data)=>{
+       this.events= data;
        console.log(data);
     },(error) => {
-       console.log(error);
+         console.log(error);
     });
   }
 

@@ -52,9 +52,9 @@ export class postEvents implements OnInit{
   ngOnInit(){
 
     this.PostEvent = new FormGroup({
-      description: new FormControl(''),
+      description:   new FormControl(''),
       contactNumber: new FormControl(''),
-
+      eventName :    new FormControl(''),
       authorisedPerson : new FormControl(''),
       date : new FormControl('2017-11-19', Validators.required),
       startTime :new FormControl('09.00', Validators.required),
