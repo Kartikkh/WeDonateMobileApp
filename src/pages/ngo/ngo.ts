@@ -7,6 +7,7 @@ import {ngoDashboard} from "./dashboard/ngoDashboard";
 import {ResendMail} from './resendMail/resendMail'
 
 
+
 @IonicPage()
 
 @Component({
@@ -27,7 +28,7 @@ export class NgoPage {
 
 
     this.ngoAuthService.loginNgo(form.value).then(()=>{
-        this.navCtrl.setRoot(ngoDashboard);
+        this.navCtrl.setRoot(ngoDashboard)
     }).catch(error=>{
     })
   }

@@ -36,6 +36,10 @@ export class Constants {
     return "https://localhost:3000/ngoEvent/post";
   }
 
+  public static getEventDetails() : string {
+    return "https://localhost:3000/ngoEvent/";
+  }
+
 
 
 }

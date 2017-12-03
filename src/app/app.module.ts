@@ -28,7 +28,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
 import { FileTransfer } from '@ionic-native/file-transfer';
-
+import {eventDetail} from "../pages/ngo/eventDetailPage/eventDetail";
 
 @NgModule({
 
@@ -45,7 +45,8 @@ import { FileTransfer } from '@ionic-native/file-transfer';
     userResendMail,
     userPopover,
     ngoPopover,
-    postEvents
+    postEvents,
+    eventDetail
   ],
 
   imports: [
@@ -71,7 +72,8 @@ import { FileTransfer } from '@ionic-native/file-transfer';
     userResendMail,
     userPopover,
     ngoPopover,
-    postEvents
+    postEvents,
+    eventDetail
   ],
   providers: [
     StatusBar,
