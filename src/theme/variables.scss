@@ -33,12 +33,16 @@ $app-direction: ltr;
 // colors so you can add, rename and remove colors as needed.
 // The "primary" color is the only required color in the map.
 
-$primary:   #488AFF !default;
-$secondary: #32DB64 !default;
-$danger:    #F53D3D !default;
-$light:     #F4F4F4 !default;
-$dark:      #222222 !default;
-$white:     #FFF222 !default;
+
+$brand-blue: hsl(240,100%,50%) !default;
+$brand-blue-alternate: hsl(209.9,100%,50%) !default;
+$brand-blue-aqua: hsl(195,53.3%,94.1%) !default;
+
+$brand-black: hsl(0,0%,23.9%) !default;
+$brand-gray: hsl(0,0%,82.7%) !default;
+$brand-gray-lighter:  hsl(0,0%,86.3%) !default;
+$brand-white: hsl(0,0%,96.1%) !default;
+
 
 $colors: (
   primary:    $primary,
@@ -53,7 +57,6 @@ $colors: (
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
-
 
 
 
