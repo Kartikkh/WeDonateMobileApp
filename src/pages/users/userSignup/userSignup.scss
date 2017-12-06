@@ -1,0 +1,24 @@
+.form {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-evenly;
+  
+  &__label {
+    margin-left: 10px;
+    color: $brand-gray;
+  }
+
+  &__input {
+    color: #3d3d3d;
+    border: 1px solid $brand-gray;
+    border-radius: 1px;
+    padding-left: 1rem;
+    height: 45px;
+  }
+
+  &__btn {
+    background-color: $brand-blue;
+    width: calc(100% - 25px);
+    align-self: center;
+  }
+}
