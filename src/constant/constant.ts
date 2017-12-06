@@ -24,9 +24,22 @@ export class Constants {
     return "https://localhost:3000/userAuth/resend_email";
   }
 
-
   public static postEvents():string{
-    return "https://localhost:3000/ngoEvent/post"
-}
+    return "https://localhost:3000/ngoEvent/post";
+  }
+
+  public static postImage() :string{
+    return "https://localhost:3000/image";
+  }
+
+  public static getEvents() : string {
+    return "https://localhost:3000/ngoEvent/post";
+  }
+
+  public static getEventDetails() : string {
+    return "https://localhost:3000/ngoEvent/";
+  }
+
+
 
 }

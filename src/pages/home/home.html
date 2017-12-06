@@ -4,9 +4,16 @@
               <ion-col>
                 <h3 text-center class="header">We-Donate</h3>
                 <p text-center class="white">Lets come together to donate for a cause</p>
-
-                <button class="button" ion-button full (click)="onGotoUser()">User</button>
-                <button class="button" ion-button full (click)="onGotoNgo()">NGO</button>
+                <div class="flex-wrapper">
+                  <button icon-right class="button" ion-button (click)="onGotoUser()">
+                    <ion-icon name="man" class="icon"></ion-icon>
+                    User
+                  </button>
+                  <button icon-right class="button" ion-button (click)="onGotoNgo()">
+                    <ion-icon ios="ios-home" md="md-home" class="icon"></ion-icon>
+                    NGO
+                  </button>
+                </div>
               </ion-col>
         </ion-row>
   </ion-grid>

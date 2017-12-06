@@ -33,6 +33,7 @@ $app-direction: ltr;
 // colors so you can add, rename and remove colors as needed.
 // The "primary" color is the only required color in the map.
 
+
 $brand-blue: hsl(240,100%,50%) !default;
 $brand-blue-alternate: hsl(209.9,100%,50%) !default;
 $brand-blue-aqua: hsl(195,53.3%,94.1%) !default;
@@ -42,13 +43,14 @@ $brand-gray: hsl(0,0%,82.7%) !default;
 $brand-gray-lighter:  hsl(0,0%,86.3%) !default;
 $brand-white: hsl(0,0%,96.1%) !default;
 
+
 $colors: (
-  primary:    #488aff,
-  secondary:  #32db64,
-  danger:     #f53d3d,
-  light:      #f4f4f4,
-  dark:       #222,
-  white:      #fff
+  primary:    $primary,
+  secondary:  $secondary,
+  danger:     $danger,
+  light:      $light,
+  dark:       $dark,
+  white:      $white
 );
 
 

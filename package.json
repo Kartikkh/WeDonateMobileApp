@@ -20,17 +20,23 @@
     "@angular/http": "4.4.3",
     "@angular/platform-browser": "4.4.3",
     "@angular/platform-browser-dynamic": "4.4.3",
+    "@ionic-native/camera": "^4.4.2",
     "@ionic-native/core": "4.3.0",
+    "@ionic-native/file": "^4.4.2",
+    "@ionic-native/file-transfer": "^4.4.2",
     "@ionic-native/geolocation": "^4.3.3",
     "@ionic-native/native-geocoder": "^4.3.3",
     "@ionic-native/native-storage": "^4.3.2",
     "@ionic-native/splash-screen": "4.3.0",
     "@ionic-native/status-bar": "4.3.0",
     "@ionic/storage": "2.0.1",
+    "cordova-android": "~6.3.0",
     "cordova-browser": "~5.0.1",
+    "cordova-ios": "~4.5.3",
     "cordova-plugin-add-swift-support": "^1.7.0",
     "cordova-plugin-compat": "^1.2.0",
     "cordova-plugin-device": "^1.1.7",
+    "cordova-plugin-file-transfer": "^1.7.0",
     "cordova-plugin-geolocation": "^2.4.3",
     "cordova-plugin-ionic-webview": "^1.1.16",
     "cordova-plugin-nativegeocoder": "^2.0.4",
@@ -41,17 +47,16 @@
     "ionic-angular": "3.7.1",
     "ionic-plugin-keyboard": "^2.2.1",
     "ionicons": "3.0.0",
+    "ng2-socket-io": "^0.1.7",
     "rxjs": "5.4.3",
     "socket.io": "^2.0.4",
     "socket.io-client": "^2.0.4",
     "sw-toolbox": "3.6.0",
-    "zone.js": "0.8.18",
-    "cordova-ios": "~4.5.3",
-    "cordova-android": "~6.3.0"
+    "zone.js": "0.8.18"
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.0.0",
-    "ionic": "3.18.0",
+    "ionic": "3.19.0",
     "typescript": "2.3.4"
   },
   "description": "An Ionic project",
@@ -69,12 +74,14 @@
       "cordova-plugin-whitelist": {},
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
-      "cordova-plugin-ionic-webview": {}
+      "cordova-plugin-ionic-webview": {},
+      "cordova-plugin-file": {},
+      "cordova-plugin-file-transfer": {},
+      "cordova-plugin-camera": {}
     },
     "platforms": [
       "browser",
-      "ios",
-      "android"
+      "ios"
     ]
   }
 }

@@ -25,6 +25,10 @@ import {postEvents} from "../pages/ngo/ngoPostEvents/postEvents";
 import { Geolocation } from '@ionic-native/geolocation';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { File } from '@ionic-native/file';
+import { FileTransfer } from '@ionic-native/file-transfer';
+import {eventDetail} from "../pages/ngo/eventDetailPage/eventDetail";
 
 @NgModule({
 
@@ -41,7 +45,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     userResendMail,
     userPopover,
     ngoPopover,
-    postEvents
+    postEvents,
+    eventDetail
   ],
 
   imports: [
@@ -50,7 +55,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     IonicStorageModule.forRoot(),
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -66,7 +72,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     userResendMail,
     userPopover,
     ngoPopover,
-    postEvents
+    postEvents,
+    eventDetail
   ],
   providers: [
     StatusBar,
@@ -75,7 +82,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     userAuthService,
     Geolocation,
     NativeGeocoder,
-
+    File,
+    Camera,
+    FileTransfer,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     { provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

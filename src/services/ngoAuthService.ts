@@ -29,7 +29,7 @@ export class ngoAuthService {
       message: 'Please try again later',
       buttons: ['okay']
     });
-    
+
     loading.present();
 
     let promise = new Promise((resolve, reject) => {
@@ -64,6 +64,9 @@ export class ngoAuthService {
 
   storeUserCredentials(Ngo) {
     this.storage.set('token', Ngo.token);
+    this.storage.get('token').then((val) => {
+      console.log('token is', val);
+    });
     this.useCredentials(Ngo.token);
   }
 

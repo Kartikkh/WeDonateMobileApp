@@ -10,11 +10,37 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
+
+
 <ion-content>
-
-
+  <ion-card>
   <form [formGroup]="PostEvent" (ngSubmit)="Postevent(PostEvent.value)">
+
+    <ion-card-header>
+      <div *ngIf="imageChosen == 0" class="uploadWrap">
+        <ion-icon (click)="presentActionSheet()" name="cloud-upload"></ion-icon>
+      </div>
+
+      <div *ngIf="imageChosen == 1" class="img-preview">
+        <img [src]="imagePath" alt="">
+      </div>
+    </ion-card-header>
+
+
+    <div *ngIf="imageChosen == 1" class="uploadWrap">
+      <ion-icon (click)="uploadPhoto()" name="cloud-upload"></ion-icon>
+    </div>
+
+
     <ion-list>
+
+      <ion-item>
+        <ion-label>Event Name</ion-label>
+        <ion-textarea type="text" formControlName="eventName"></ion-textarea>
+      </ion-item>
+
+
       <ion-item>
         <ion-label>Post</ion-label>
         <ion-textarea type="text" formControlName="description"></ion-textarea>
@@ -22,9 +48,9 @@
 
       <ion-item>
         <ion-label>Location</ion-label>
-        <ion-input type="text" formControlName="Location"></ion-input>
+        <ion-input type="text" formControlName="Location" [(ngModel)]="setLocation" >  </ion-input>
       </ion-item>
-      <button  (click)="GetLocation()"> <ion-icon name="locate"></ion-icon> </button>
+      <button type="button"  (click)="GetLocation()"> <ion-icon name="locate"></ion-icon> </button>
 
 
 
@@ -48,16 +74,23 @@
 
       <ion-item>
         <ion-label>Contact Number</ion-label>
-        <ion-input type="text" formControlName="ContactNumber"></ion-input>
+        <ion-input type="text" formControlName="contactNumber"></ion-input>
       </ion-item>
 
+
+      <ion-item>
+        <ion-label>Authorised Person</ion-label>
+        <ion-input type="text" formControlName="authorisedPerson"></ion-input>
+      </ion-item>
+
+
     </ion-list>
-    <div padding>
+
       <button ion-button full type="submit">Post</button>
-    </div>
+
   </form>
 
 
-
+</ion-card>
 
 </ion-content>
