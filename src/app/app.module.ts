@@ -25,10 +25,13 @@ import {postEvents} from "../pages/ngo/ngoPostEvents/postEvents";
 import { Geolocation } from '@ionic-native/geolocation';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Camera, CameraOptions } from '@ionic-native/camera';
+import { Camera } from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import {eventDetail} from "../pages/ngo/eventDetailPage/eventDetail";
+import { SocialSharing } from '@ionic-native/social-sharing';
+import {NgoProfile} from "../pages/ngo/ngoProfile/ngoProfile";
+
 
 @NgModule({
 
@@ -46,7 +49,8 @@ import {eventDetail} from "../pages/ngo/eventDetailPage/eventDetail";
     userPopover,
     ngoPopover,
     postEvents,
-    eventDetail
+    eventDetail,
+    NgoProfile
   ],
 
   imports: [
@@ -73,6 +77,7 @@ import {eventDetail} from "../pages/ngo/eventDetailPage/eventDetail";
     userPopover,
     ngoPopover,
     postEvents,
+    NgoProfile,
     eventDetail
   ],
   providers: [
@@ -84,6 +89,7 @@ import {eventDetail} from "../pages/ngo/eventDetailPage/eventDetail";
     NativeGeocoder,
     File,
     Camera,
+    SocialSharing,
     FileTransfer,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     { provide: HTTP_INTERCEPTORS,

@@ -5,6 +5,7 @@ import {NavParams} from "ionic-angular";
 import {Constants} from "../../../constant/constant";
 import {HttpClient} from '@angular/common/http';
 import {ngoDashboard} from "../dashboard/ngoDashboard";
+import {SocialSharing} from "@ionic-native/social-sharing";
 
 
 @Component({
@@ -20,7 +21,8 @@ export class eventDetail implements OnInit{
               public ngoAuthService:ngoAuthService,
               public http : HttpClient,
               public alertCtrl: AlertController,
-              public loadingCtrl: LoadingController) {}
+              public loadingCtrl: LoadingController,
+              private socialSharing: SocialSharing) {}
 
   ngOnInit(){
     this.postId = this.navParams.get('postid');
@@ -55,6 +57,24 @@ export class eventDetail implements OnInit{
       alert.present();
       this.navCtrl.setRoot(ngoDashboard);
     })
+  }
+
+
+
+  share(name ,message){
+
+    const alert = this.alertCtrl.create({
+      title: 'Sorry for the Inconvenience',
+      message: 'Please try again later',
+      buttons: ['okay']
+    });
+
+    this.socialSharing.share(name,message).then(() => {
+
+    }).catch(() => {
+      alert.present();
+    });
+
   }
 
 

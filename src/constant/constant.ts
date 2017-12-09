@@ -40,6 +40,10 @@ export class Constants {
     return "https://localhost:3000/ngoEvent/";
   }
 
+  public  static getNgoProfile() : string{
+    return "https://localhost:3000/ngoProfile/";
+  }
+
 
 
 }

@@ -10,7 +10,7 @@
     <p>{{eventsDetail.ngoName}}</p>
 
     <img src= "https://camo.githubusercontent.com/5c1975da7d9ab735ceb71c57b6c7e48ff3e08ca4/68747470733a2f2f6564656e742e6769746875622e696f2f537570657254696e7949636f6e732f696d616765732f7376672f74656c656772616d2e737667">
-    <p>{{eventsDetail.created_at}}}</p>
+    <p>{{eventsDetail.created_at | date}}</p>
     <ion-row>
       <ion-col>
         <button ion-button icon-left clear small>
@@ -40,24 +40,13 @@
       <p>{{eventsDetail.locationName}}</p>
     </ion-card-content>
     <ion-card-content>
-      <p>{{eventsDetail.authorisedPerson}}</p>
-    </ion-card-content>
-    <ion-card-content>
-      <p>{{eventsDetail.authorisedPerson}}</p>
-    </ion-card-content>
-    <ion-card-content>
       <p>{{eventsDetail.post}}</p>
     </ion-card-content>
 
   </ion-content>
-  <!--<div class="tabs tabs-icon-top">-->
-    <!--<a class="tab-item">-->
-      <!--<i class="icon ion-heart" ng-class="{'heart': class == true}" ng-click="favbutton(edu.id)"></i>-->
-      <!--Add To Favourite-->
-    <!--</a>-->
-    <!--<a class="tab-item">-->
-      <!--<i class="icon ion-share" ng-click="shareAnywhere()"> </i>-->
-      <!--Share-->
-    <!--</a>-->
-  <!--</div>-->
 
+<ion-footer>
+  <ion-toolbar>
+    <button ion-button color="secondary" (click)="share(eventsDetail.eventName, eventsDetail.post)"><ion-icon name="share">Share</ion-icon></button>
+  </ion-toolbar>
+</ion-footer>

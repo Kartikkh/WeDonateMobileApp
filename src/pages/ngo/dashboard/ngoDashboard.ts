@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NavController, ViewController, PopoverController, AlertController, LoadingController} from 'ionic-angular';
 import {ngoAuthService} from "../../../services/ngoAuthService";
 import {NavParams} from "ionic-angular";
@@ -8,15 +8,21 @@ import {postEvents} from '../ngoPostEvents/postEvents';
 import {Constants} from "../../../constant/constant";
 import {HttpClient} from '@angular/common/http';
 import {eventDetail} from "../eventDetailPage/eventDetail";
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { NgoProfile} from '../ngoProfile/ngoProfile';
+
 
 @Component({
   templateUrl: 'ngoDashboard.html'
 })
 
-export class ngoDashboard{
+export class ngoDashboard implements  OnInit{
 
   events : {};
 
+  ngOnInit(){
+    this.getEvents();
+}
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public ngoAuthService:ngoAuthService,
@@ -25,7 +31,8 @@ export class ngoDashboard{
               public loadingCtrl: LoadingController,
               private viewCtrl: ViewController,
               public popoverCtrl: PopoverController,
-              public modalCtrl: ModalController) {}
+              public modalCtrl: ModalController,
+              private socialSharing: SocialSharing) {}
 
 
   ionViewCanEnter()  {
@@ -35,7 +42,6 @@ export class ngoDashboard{
 
   ionViewWillEnter() {
     this.viewCtrl.showBackButton(false);
-    this.getEvents();
   }
 
 
@@ -76,6 +82,7 @@ export class ngoDashboard{
     loading.present();
 
     this.http.get(Constants.getEvents()).subscribe((data)=>{
+      console.log(data);
        this.events= data;
       loading.dismiss();
     },(error) => {
@@ -86,7 +93,6 @@ export class ngoDashboard{
   }
 
 
-
   eventDetail(postId : string){
     console.log(postId);
     this.navCtrl.push(eventDetail, {postid : postId}).catch((error)=>{
@@ -94,6 +100,11 @@ export class ngoDashboard{
       this.navCtrl.setRoot(ngoDashboard);
       }
     );
+  }
+
+
+  showProfile(){
+    this.navCtrl.push(NgoProfile);
   }
 
 }
