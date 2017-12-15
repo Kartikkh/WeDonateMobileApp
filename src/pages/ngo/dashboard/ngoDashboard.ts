@@ -8,7 +8,6 @@ import {postEvents} from '../ngoPostEvents/postEvents';
 import {Constants} from "../../../constant/constant";
 import {HttpClient} from '@angular/common/http';
 import {eventDetail} from "../eventDetailPage/eventDetail";
-import { SocialSharing } from '@ionic-native/social-sharing';
 import { NgoProfile} from '../ngoProfile/ngoProfile';
 
 
@@ -31,8 +30,7 @@ export class ngoDashboard implements  OnInit{
               public loadingCtrl: LoadingController,
               private viewCtrl: ViewController,
               public popoverCtrl: PopoverController,
-              public modalCtrl: ModalController,
-              private socialSharing: SocialSharing) {}
+              public modalCtrl: ModalController) {}
 
 
   ionViewCanEnter()  {

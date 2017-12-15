@@ -63,6 +63,7 @@ export class ngoAuthService {
   }
 
   storeUserCredentials(Ngo) {
+    console.log(Ngo.token);
     this.storage.set('token', Ngo.token);
     this.storage.get('token').then((val) => {
       console.log('token is', val);

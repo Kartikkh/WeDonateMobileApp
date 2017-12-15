@@ -3,24 +3,29 @@ import {NavController, LoadingController, AlertController, NavParams} from 'ioni
 import {Constants} from "../../../constant/constant";
 import {HttpClient} from '@angular/common/http';
 import {ngoDashboard} from "../dashboard/ngoDashboard";
-
+import {ngoAuthService} from "../../../services/ngoAuthService";
 
 @Component({
-  templateUrl: 'ngoProfile.html',
+  templateUrl: 'ngoProfile.html'
 })
 
 
-export class NgoProfile implements OnInit{
+export class NgoProfile implements  OnInit{
+  ngo : {};
 
-  constructor(  public http : HttpClient,
+  constructor(public http : HttpClient,
                 public alertCtrl: AlertController,
                 public loadingCtrl: LoadingController,
-                public navCtrl: NavController,
-                public navParams: NavParams){}
+                public navCtrl: NavController,public ngoAuthService:ngoAuthService,){}
 
   ngOnInit(){
     this.ngoProfile();
   }
+
+  ionViewCanEnter()  {
+    return this.ngoAuthService.isAuthenticated;
+  }
+
 
   ngoProfile(){
     const loading = this.loadingCtrl.create({
@@ -38,7 +43,8 @@ export class NgoProfile implements OnInit{
 
     this.http.get(Constants.getNgoProfile()).subscribe(data=>{
       loading.dismiss();
-      console.log(data);
+      this.ngo = data;
+      console.log(this.ngo);
     },error=>{
       loading.dismiss();
       alert.setMessage("Something went wrong ! Please Try Again ");

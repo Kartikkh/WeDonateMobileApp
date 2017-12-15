@@ -31,6 +31,9 @@ import { FileTransfer } from '@ionic-native/file-transfer';
 import {eventDetail} from "../pages/ngo/eventDetailPage/eventDetail";
 import { SocialSharing } from '@ionic-native/social-sharing';
 import {NgoProfile} from "../pages/ngo/ngoProfile/ngoProfile";
+import {nearestEvents} from '../pages/users/nearestEvents/nearestEvents';
+import {trendingEvents} from '../pages/users/trendingEvents/trendingEvents';
+import {followingEvents} from '../pages/users/followingNgo/followingNgo';
 
 
 @NgModule({
@@ -50,7 +53,10 @@ import {NgoProfile} from "../pages/ngo/ngoProfile/ngoProfile";
     ngoPopover,
     postEvents,
     eventDetail,
-    NgoProfile
+    NgoProfile,
+    trendingEvents,
+    nearestEvents,
+    followingEvents
   ],
 
   imports: [
@@ -78,7 +84,10 @@ import {NgoProfile} from "../pages/ngo/ngoProfile/ngoProfile";
     ngoPopover,
     postEvents,
     NgoProfile,
-    eventDetail
+    eventDetail,
+    trendingEvents,
+    nearestEvents,
+    followingEvents
   ],
   providers: [
     StatusBar,

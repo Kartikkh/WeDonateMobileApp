@@ -20,9 +20,9 @@ export class AuthInterceptor implements HttpInterceptor {
     });
 
     console.log(this.authHeader);
-    if(this.authHeader===null || this.authHeader===undefined){
-      this.nav.setRoot(ngoDashboard);
-    }
+    // if(this.authHeader===null || this.authHeader===undefined){
+    //   this.nav.setRoot(ngoDashboard);
+    // }
     const authReq = req.clone({ setHeaders: { authorization: 'Bearer ' + this.authHeader} });
 
     return next.handle(authReq);
