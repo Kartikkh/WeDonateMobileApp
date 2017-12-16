@@ -1,7 +1,37 @@
 <ion-header>
-
   <ion-navbar>
-    <ion-title>Following Ngo</ion-title>
+    <ion-buttons left >
+      <button ion-button color="dark" clear icon-only (click)="showProfile()">
+        <ion-icon name='contact' is-active="false"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      Subscribed Ngo
+    </ion-title>
   </ion-navbar>
-
 </ion-header>
+
+
+<ion-content>
+
+  <ion-refresher (ionRefresh)="doRefresh($event);">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list *ngFor="let ngolist of ngoList" (click)="" >
+    <ion-item>
+      <ion-thumbnail item-start>
+        <img src="https://camo.githubusercontent.com/d52417a41678e6edabcde6360d6a1c3154ee15f5/68747470733a2f2f6564656e742e6769746875622e696f2f537570657254696e7949636f6e732f696d616765732f7376672f666c69636b722e737667">
+      </ion-thumbnail>
+      <h2>{{ngolist.ngoName}}</h2>
+      <p>{{ngolist.tagLine}} • {{ngolist.followersCount}}</p>
+      <button ion-button clear item-end>View</button>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

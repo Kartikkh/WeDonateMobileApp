@@ -44,6 +44,13 @@ export class Constants {
     return "https://localhost:3000/ngoProfile/";
   }
 
+  public  static getNearestEvents() : string{
+    return "https://localhost:3000/ngoEvent/nearestLocation/";
+  }
+
+  public  static followedNgoList() : string{
+    return "https://localhost:3000/userInfo/followersList";
+  }
 
 
 }

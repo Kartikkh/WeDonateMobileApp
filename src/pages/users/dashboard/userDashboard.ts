@@ -1,15 +1,26 @@
-import { Component } from '@angular/core';
-import { NavController,ViewController,PopoverController } from 'ionic-angular';
+import { Component ,ViewChild} from '@angular/core';
+import { Nav,NavController,ViewController,PopoverController } from 'ionic-angular';
 import {NavParams} from "ionic-angular";
 import {userAuthService} from "../../../services/userAuthService";
 import {userPopover} from "../sidePopover/sidePopover";
-
+import {followingEvents} from "../followingNgo/followingNgo";
+import {trendingEvents} from "../trendingEvents/trendingEvents";
+import {nearestEvents} from "../nearestEvents/nearestEvents";
 
 @Component({
   templateUrl: 'userDashboard.html'
 })
 
 export class userDashboard{
+
+
+  @ViewChild(Nav) nav: Nav;
+
+  //
+  // FollowingEvents : followingEvents;
+  // TrendingEvents  : trendingEvents;
+  // NearestEvents   : nearestEvents;
+
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public userAuthService:userAuthService,
@@ -44,7 +55,14 @@ export class userDashboard{
     });
   }
 
+  // openPage(page : any){
+  //   console.log(page);
+  //  this.nav.setRoot(page);
+  // }
 
+  TrendingEvents(){
+    this.navCtrl.push(trendingEvents);
+  }
 
 
 }

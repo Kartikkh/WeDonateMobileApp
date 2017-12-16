@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams ,LoadingController} from 'ionic-angular';
-@IonicPage()
+import { NavController, NavParams ,LoadingController} from 'ionic-angular';
+
 
 @Component({
   templateUrl: 'trendingEvents.html',

@@ -7,6 +7,7 @@
   <button ion-button menuToggle>
     <ion-icon name="menu"></ion-icon>
   </button>
+
   <ion-buttons end>
     <button ion-button icon-only (click)="presentPopover($event)">
       <ion-icon name="more"></ion-icon>
@@ -44,16 +45,16 @@
   <ion-content>
 
     <ion-list>
-      <button ion-item (click)="openPage(homePage)">
-        Home
-      </button>
-      <button ion-item (click)="openPage(friendsPage)">
+      <!--<button ion-item (click)="openPage(homePage)">-->
+        <!--Home-->
+      <!--</button>-->
+      <button ion-item (click)="FollowingEvents()">
         Following NGO
       </button>
-      <button ion-item (click)="openPage(eventsPage)">
+      <button ion-item (click)="TrendingEvents()">
        Trending Events
       </button>
-      <button ion-item (click)="closeMenu()">
+      <button ion-item (click)="NearestEvents()">
         Nearest NGO
       </button>
     </ion-list>

@@ -3,7 +3,7 @@ import {NavController, ViewController, PopoverController, AlertController, Loadi
 import {ngoAuthService} from "../../../services/ngoAuthService";
 import {NavParams} from "ionic-angular";
 import {Constants} from "../../../constant/constant";
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {ngoDashboard} from "../dashboard/ngoDashboard";
 import {SocialSharing} from "@ionic-native/social-sharing";
 
@@ -46,9 +46,9 @@ export class eventDetail implements OnInit{
     });
 
     loading.present();
-
-
-    this.http.get(Constants.getEventDetails() + this.postId).subscribe(data =>{
+    let params = new HttpParams();
+    params = params.append('postId', this.postId);
+    this.http.get(Constants.getEventDetails() ,{params: params}).subscribe(data =>{
              loading.dismiss();
             this.eventsDetail = data;
     },(error)=>{

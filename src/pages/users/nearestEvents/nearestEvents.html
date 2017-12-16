@@ -1,8 +1,65 @@
 <ion-header>
-
   <ion-navbar>
-    <ion-title>Nearest Events</ion-title>
+    <ion-buttons left >
+      <button ion-button color="dark" clear icon-only (click)="showProfile()">
+        <ion-icon name='contact' is-active="false"></ion-icon>
+      </button>
+    </ion-buttons >
+    <ion-title>
+      Nearest Events
+    </ion-title>
   </ion-navbar>
-
 </ion-header>
 
+
+<ion-content>
+
+  <ion-refresher (ionRefresh)="doRefresh($event);">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-card *ngFor="let event of events" (click)="eventDetail(event._id)" >
+
+    <ion-item >
+      <ion-avatar item-start>
+        <img src="https://camo.githubusercontent.com/d52417a41678e6edabcde6360d6a1c3154ee15f5/68747470733a2f2f6564656e742e6769746875622e696f2f537570657254696e7949636f6e732f696d616765732f7376672f666c69636b722e737667">
+      </ion-avatar>
+      <h2>{{event.eventName}}</h2>
+      <p>{{event.created_at | date }}</p>
+    </ion-item>
+
+    <img src= "https://camo.githubusercontent.com/5c1975da7d9ab735ceb71c57b6c7e48ff3e08ca4/68747470733a2f2f6564656e742e6769746875622e696f2f537570657254696e7949636f6e732f696d616765732f7376672f74656c656772616d2e737667">
+
+    <ion-card-content>
+      <p>{{event.post}}</p>
+    </ion-card-content>
+
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name="thumbs-up"></ion-icon>
+          <div>{{event.like}}</div>
+        </button>
+      </ion-col>
+
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name="text"></ion-icon>
+          <div>{{event.interested}}</div>
+        </button>
+      </ion-col>
+
+      <ion-col center text-center>
+        <ion-note>
+          {{event.going}}
+        </ion-note>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+</ion-content>
